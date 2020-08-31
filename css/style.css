@@ -38,7 +38,7 @@
 
 
 
- /*department name*/
+ /*department name OR main header*/
 h2{
     margin: auto;
     color: #ffffff;
@@ -90,6 +90,90 @@ body{
     animation-name: slide;
 }
 
+/*search bar*/
+input[type=text] {
+  width: 300px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('../images/searchicon.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  margin:10px 20px;
+}
+
+input[type=text]:focus {
+  width: 95%;
+}
+
+/*main page content*/
+#main{
+  position: relative;
+  min-height: 500px;
+}
+.sidenav {
+  height: 100%;
+  width: 300px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-right:2px solid #111;
+}
+.sidenav a {
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  display: block;
+  border-bottom: 1px solid #818181;
+}
+
+.sidenav a:hover {
+  color: black;
+}
+#list {
+  margin-left: 300px;
+}
+
+.card{
+     width: 25%;
+     display: inline-block;
+     box-shadow: 2px 2px 20px black;
+     border-radius: 5px; 
+     margin: 4%;
+    }
+
+.image img{
+  width: 100%;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+ }
+
+.title{
+  text-align: center;
+  padding: 10px;
+ }
+
+ .teacher_name a{
+   text-decoration: none;
+ }
+
+.des{
+   padding: 3px;
+   text-align: center;
+   padding-top: 10px;
+   padding-bottom: 20px;
+   border-bottom-right-radius: 5px;
+   border-bottom-left-radius: 5px;
+}
+
+
 /*staff info*/
 .staff{
   display: flex;
@@ -139,7 +223,7 @@ ul{
     text-decoration: none;
 
   }
-  a:hover {
+  li a:hover {
     color: #fff;
   }
 
@@ -206,4 +290,10 @@ ul{
     }
     100% {
     }
+}
+@media (min-width: 768px) and (max-width: 1009px) {
+
+  .card {
+      width: 40%;
+  }
 }
