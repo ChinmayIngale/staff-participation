@@ -1,9 +1,27 @@
+<?php
+$guess=$_GET['ssn']??NULL;
+$sql = "SELECT * FROM staff WHERE ssn=$guess;";
+$conn = mysqli_connect("localhost","root","","staff_info");
+if (mysqli_connect_error()){
+    echo "can't connect to database";
+}
+else{
+    $result = mysqli_query($conn, $sql);
+    while($row = $result->fetch_array()){
+        $ssn = $row['ssn'];
+        $sname = $row['S_name'];
+        $sinfo = $row['S_info'];
+        $dept = $row['dept'];
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prof. Yogesh Pingle</title>
+    <title><?php echo $sname; ?></title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -24,7 +42,7 @@
     <div class="img">
         <div class="overlay">
             <div class="heading">
-                <div class="res"><h2>IT Department</h2></div>
+                <div class="res"><h2><?php echo $dept; ?></h2></div>
                 <div class="break"></div>
                 <span id="line"></span>
             </div>
@@ -33,13 +51,14 @@
     <div class="staff">
         <div id="staffinfo">
             <div id="Staffname">
-                <h3>prof. yogesh pingle</h3>
+                <h3><?php echo $sname; ?></h3>
             </div>
-            <div id="staffdes">I am an Assistant Professor at Vidyavardhini’s College of Engineering & Technology, Vasai affiliated to University of Mumbai, India. </div>
+            <div id="staffdes"><?php echo $sinfo; ?> </div>
         </div>
         <div id="staffpic">
-            <div>
-                <img src="images/1.png" width="200" height="200">
+            <div><?php
+                echo '<img src="showimg.php?ssn='.$ssn.'" width="200" height="200">';
+                ?>
             </div>
         </div>
     </div>
@@ -55,5 +74,5 @@
         <div id="col2" ></div>
     </div>
 </body>
-<script src="logic.js"></script>
+<script src="p2_logic.js"></script>
 </html>

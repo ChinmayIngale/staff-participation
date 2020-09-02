@@ -74,7 +74,7 @@ body{
 }
 #line{
     border-top: 5px solid white;
-    width: 500px;
+    width: 750px;
     margin: auto;
     animation-duration: 1s; 
     animation-name: zoom;
@@ -117,7 +117,7 @@ input[type=text]:focus {
   position: relative;
   min-height: 500px;
 }
-.sidenav {
+#sidenav {
   height: 100%;
   width: 300px;
   position: absolute;
@@ -125,7 +125,10 @@ input[type=text]:focus {
   left: 0;
   border-right:2px solid #111;
 }
-.sidenav a {
+#activedept , #sidenav a:hover {
+  color: black;
+}
+.dept_select {
   padding: 12px;
   text-decoration: none;
   font-size: 18px;
@@ -134,23 +137,25 @@ input[type=text]:focus {
   border-bottom: 1px solid #818181;
 }
 
-.sidenav a:hover {
-  color: black;
-}
+
 #list {
   margin-left: 300px;
+  text-align: center;
 }
 
 .card{
-     width: 25%;
+     width: 250px;
      display: inline-block;
      box-shadow: 2px 2px 20px black;
      border-radius: 5px; 
      margin: 4%;
+     animation-duration: 1s; 
+    animation-name: zoom;
     }
 
 .image img{
-  width: 100%;
+  width: 250px;
+  height: 250px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
  }
@@ -262,7 +267,6 @@ ul{
     position: absolute;
     left: 0;
     top: 0;
-    
     width: 100%;
     height: 100%;
     border-right: solid 1px #fff;
@@ -285,15 +289,9 @@ ul{
 }
 @keyframes zoom{
     0% {
-        transform: scaleX(.1);
+        transform: scale(.1);
         visibility: visible;
     }
     100% {
     }
-}
-@media (min-width: 768px) and (max-width: 1009px) {
-
-  .card {
-      width: 40%;
-  }
 }
