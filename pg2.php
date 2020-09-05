@@ -71,8 +71,10 @@ else{
                 <li class="btn" ><a href="#">Workshops</a></li>
               </ul>
         </div>
-        <div id="col2" ></div>
+        <div id="col2" >
+          <?php include("data.php"); ?> 
+        </div>
     </div>
 </body>
-<script src="p2_logic.js"></script>
+<script src="js/p2_logic.js"></script>
 </html>

@@ -74,7 +74,7 @@ body{
 }
 #line{
     border-top: 5px solid white;
-    width: 750px;
+    width: 60%;
     margin: auto;
     animation-duration: 1s; 
     animation-name: zoom;
@@ -87,11 +87,11 @@ body{
     text-align: center;
     margin: auto;
     animation-duration: 1s; 
-    animation-name: slide;
+    animation-name: zoom;
 }
 
 /*search bar*/
-input[type=text] {
+#search {
   width: 300px;
   box-sizing: border-box;
   border: 2px solid #ccc;
@@ -105,11 +105,34 @@ input[type=text] {
   padding: 12px 20px 12px 40px;
   -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
-  margin:10px 20px;
+  margin:10px auto;
 }
 
-input[type=text]:focus {
+#search:focus {
   width: 95%;
+}
+/*select dept res*/
+.box{
+  display: none;
+}
+.box select {
+  background-color: #0763e475;
+  padding: 12px;
+  width: 300px;
+  border: none;
+  font-size: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+  transition: .5s;
+}
+
+.box select option {
+  padding: 30px;
+}
+.box select:focus{
+  margin-bottom: 150px;
 }
 
 /*main page content*/
@@ -118,9 +141,9 @@ input[type=text]:focus {
   min-height: 500px;
 }
 #sidenav {
+  position:absolute;
   height: 100%;
   width: 300px;
-  position: absolute;
   top: 0;
   left: 0;
   border-right:2px solid #111;
@@ -139,19 +162,23 @@ input[type=text]:focus {
 
 
 #list {
-  margin-left: 300px;
   text-align: center;
+  margin-left: 300px;
 }
 
 .card{
      width: 250px;
      display: inline-block;
-     box-shadow: 2px 2px 20px black;
+     border: .5px solid black;
      border-radius: 5px; 
      margin: 4%;
      animation-duration: 1s; 
     animation-name: zoom;
+    transition: .3s;
     }
+  .card:hover{
+    box-shadow: 2px 2px 20px black;
+  }
 
 .image img{
   width: 250px;
@@ -165,8 +192,9 @@ input[type=text]:focus {
   padding: 10px;
  }
 
- .teacher_name a{
+ .card a:link, .card a:visited{
    text-decoration: none;
+   color: black;
  }
 
 .des{
@@ -278,15 +306,6 @@ ul{
   }
   
 
-@keyframes slide{
-    0% {
-        transform: translate3d(150%,0,0);
-        visibility: visible;
-    }
-    100% {
-        transform: translate3d(0,0,0);
-    }
-}
 @keyframes zoom{
     0% {
         transform: scale(.1);
@@ -294,4 +313,34 @@ ul{
     }
     100% {
     }
+}
+@media (min-width: 768px) {
+  #line{
+    width: 500px;
+  }
+}
+@media (max-width: 768px) {
+  #sidenav{
+    width:280px;
+  }
+  #list{
+    margin-left:280px;
+  }
+  .header_name h1 {
+    font-size:1.6em;
+  }
+  .header_name p {
+    font-size: 1em;
+  }
+}
+@media (max-width: 426px) {
+  #list{
+    margin-left: 0;
+  }
+  #sidenav, .header_name{
+    display: none;
+  }
+  .box{
+    display: block;
+  }
 }

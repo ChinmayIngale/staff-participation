@@ -10,7 +10,7 @@
     <header>
         <nav id="header">
             <div class="header_logo">
-              <a href="https://www.vcet.edu.in/" class="pull-left">
+              <a href="https://www.vcet.edu.in/">
                 <div id="logo-img"></div>
               </a>
             </div>
@@ -37,19 +37,32 @@
                 $dept=$_GET['page'];
             }
             else{
-                $dept = "Mechanical Engineering";
+                $dept = "All Staff";
             }
             ?>
             <a <?php if($dept == "Mechanical Engineering"){echo 'id="activedept"';}?> class="dept_select" href="index.php?page=Mechanical Engineering">MECHANICAL ENGINEERING</a>
+            <a <?php if($dept == "Electronics & Telecommunications Engineering"){echo 'id="activedept"';}?> class="dept_select" href="index.php?page=Electronics & Telecommunications Engineering">ELECTRONICS & TELECOMMUNICATIONS ENGINEERING</a>
+            <a <?php if($dept == "Instrumentation Engineering"){echo 'id="activedept"';}?> class="dept_select" href="index.php?page=Instrumentation Engineering">INSTRUMENTATION ENGINEERING</a>
             <a <?php if($dept == "Computer Engineering"){echo 'id="activedept"';}?> class="dept_select" href="index.php?page=Computer Engineering">COMPUTER ENGINEERING</a>
             <a <?php if($dept == "Information Technology"){echo 'id="activedept"';}?> class="dept_select" href="index.php?page=Information Technology">INFORMATION TECHNOLOGY</a>
-            <a <?php if($dept == "CE"){echo 'id="activedept"';}?> class="dept_select" href="index.php?page=CE">CIVIL ENGINEERING</a>
+            <a <?php if($dept == "Civil Engineering"){echo 'id="activedept"';}?> class="dept_select" href="index.php?page=Civil Engineering">CIVIL ENGINEERING</a>
         </div>
         <div id="list">
             <div>
                 <form>
-                    <input type="text" name="search" placeholder="Search Staff ..">
+                    <input id="search" type="text" name="search" placeholder="Search Staff ..">
                 </form>
+            </div>
+            <div class="box">
+            <select onchange="location = this.value;">
+            <option <?php if($dept == "All Staff"){echo 'selected';}?> value="index.php">--Select Department--</option>
+                <option <?php if($dept == "Mechanical Engineering"){echo 'selected';}?> value="index.php?page=Mechanical Engineering">Mechanical Engineering</option>
+                <option <?php if($dept == "Electronics & Telecommunications Engineering"){echo 'selected';}?> value="index.php?page=Electronics & Telecommunications Engineering">Electronics & Telecommunications Engineering</option>
+                <option <?php if($dept == "Instrumentation Engineering"){echo 'selected';}?> value="index.php?page=Instrumentation Engineering">Instrumentation Engineering</option>
+                <option <?php if($dept == "Computer Engineering"){echo 'selected';}?> value="index.php?page=Computer Engineering">Computer Engineering</option>
+                <option <?php if($dept == "Information Technology"){echo 'selected';}?> value="index.php?page=Information Technology">Information Technology</option>
+                <option <?php if($dept == "Civil Engineering"){echo 'selected';}?> value="index.php?page=Civil Engineering">Civil Engineering</option>
+            </select>
             </div>
             <?php
             /*
