@@ -42,24 +42,26 @@ else{
     <div class="img">
         <div class="overlay">
             <div class="heading">
-                <div class="res"><h2><?php echo $dept; ?></h2></div>
+                <div class="res"><h2><?php echo $dept; ?> Department</h2></div>
                 <div class="break"></div>
                 <span id="line"></span>
             </div>
         </div>
     </div>
     <div class="staff">
-        <div id="staffinfo">
-            <div id="Staffname">
-                <h3><?php echo $sname; ?></h3>
+        <div id="info_parent">
+            <div id="staffinfo">
+                <div id="staffname">
+                    <h3><?php echo $sname; ?></h3>
+                </div>
+                <div id="staffdes"><?php echo $sinfo; ?> </div>
             </div>
-            <div id="staffdes"><?php echo $sinfo; ?> </div>
+            <div id="staffpic">
+                <div><?php
+                    echo '<img src="showimg.php?ssn='.$ssn.'" width="200" height="200">';
+                    ?>
+                </div>
         </div>
-        <div id="staffpic">
-            <div><?php
-                echo '<img src="showimg.php?ssn='.$ssn.'" width="200" height="200">';
-                ?>
-            </div>
         </div>
     </div>
     <div class="activity_info">
@@ -72,7 +74,7 @@ else{
               </ul>
         </div>
         <div id="col2" >
-          <?php include("data.php"); ?> 
+          <?php //include("data.php"); ?> 
         </div>
     </div>
 </body>

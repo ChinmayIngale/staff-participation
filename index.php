@@ -40,12 +40,12 @@
                 $dept = "All Staff";
             }
             ?>
-            <a <?php if($dept == "Mechanical Engineering"){echo 'id="activedept"';}?> class="dept_select" href="index.php?page=Mechanical Engineering">MECHANICAL ENGINEERING</a>
-            <a <?php if($dept == "Electronics & Telecommunications Engineering"){echo 'id="activedept"';}?> class="dept_select" href="index.php?page=Electronics & Telecommunications Engineering">ELECTRONICS & TELECOMMUNICATIONS ENGINEERING</a>
-            <a <?php if($dept == "Instrumentation Engineering"){echo 'id="activedept"';}?> class="dept_select" href="index.php?page=Instrumentation Engineering">INSTRUMENTATION ENGINEERING</a>
-            <a <?php if($dept == "Computer Engineering"){echo 'id="activedept"';}?> class="dept_select" href="index.php?page=Computer Engineering">COMPUTER ENGINEERING</a>
-            <a <?php if($dept == "Information Technology"){echo 'id="activedept"';}?> class="dept_select" href="index.php?page=Information Technology">INFORMATION TECHNOLOGY</a>
-            <a <?php if($dept == "Civil Engineering"){echo 'id="activedept"';}?> class="dept_select" href="index.php?page=Civil Engineering">CIVIL ENGINEERING</a>
+            <a <?php if($dept == "Mechanical"){echo 'id="activedept"';}?> class="dept_select" href="index.php?page=Mechanical">MECHANICAL ENGINEERING</a>
+            <a <?php if($dept == "Electronics And Telecommunications"){echo 'id="activedept"';}?> class="dept_select" href="index.php?page=Electronics And Telecommunications">ELECTRONICS & TELECOMMUNICATIONS ENGINEERING</a>
+            <a <?php if($dept == "Instrumentation"){echo 'id="activedept"';}?> class="dept_select" href="index.php?page=Instrumentation">INSTRUMENTATION ENGINEERING</a>
+            <a <?php if($dept == "Computer"){echo 'id="activedept"';}?> class="dept_select" href="index.php?page=Computer">COMPUTER ENGINEERING</a>
+            <a <?php if($dept == "IT"){echo 'id="activedept"';}?> class="dept_select" href="index.php?page=IT">INFORMATION TECHNOLOGY</a>
+            <a <?php if($dept == "Civil"){echo 'id="activedept"';}?> class="dept_select" href="index.php?page=Civil">CIVIL ENGINEERING</a>
         </div>
         <div id="list">
             <div>
@@ -56,12 +56,12 @@
             <div class="box">
             <select onchange="location = this.value;">
             <option <?php if($dept == "All Staff"){echo 'selected';}?> value="index.php">--Select Department--</option>
-                <option <?php if($dept == "Mechanical Engineering"){echo 'selected';}?> value="index.php?page=Mechanical Engineering">Mechanical Engineering</option>
-                <option <?php if($dept == "Electronics & Telecommunications Engineering"){echo 'selected';}?> value="index.php?page=Electronics & Telecommunications Engineering">Electronics & Telecommunications Engineering</option>
-                <option <?php if($dept == "Instrumentation Engineering"){echo 'selected';}?> value="index.php?page=Instrumentation Engineering">Instrumentation Engineering</option>
-                <option <?php if($dept == "Computer Engineering"){echo 'selected';}?> value="index.php?page=Computer Engineering">Computer Engineering</option>
-                <option <?php if($dept == "Information Technology"){echo 'selected';}?> value="index.php?page=Information Technology">Information Technology</option>
-                <option <?php if($dept == "Civil Engineering"){echo 'selected';}?> value="index.php?page=Civil Engineering">Civil Engineering</option>
+                <option <?php if($dept == "Mechanical"){echo 'selected';}?> value="index.php?page=Mechanical">Mechanical Engineering</option>
+                <option <?php if($dept == "Electronics And Telecommunications"){echo 'selected';}?> value="index.php?page=Electronics And Telecommunications">Electronics & Telecommunications Engineering</option>
+                <option <?php if($dept == "Instrumentation"){echo 'selected';}?> value="index.php?page=Instrumentation">Instrumentation Engineering</option>
+                <option <?php if($dept == "Computer"){echo 'selected';}?> value="index.php?page=Computer">Computer Engineering</option>
+                <option <?php if($dept == "IT"){echo 'selected';}?> value="index.php?page=Information">Information Technology</option>
+                <option <?php if($dept == "Civil"){echo 'selected';}?> value="index.php?page=Civil">Civil Engineering</option>
             </select>
             </div>
             <?php
