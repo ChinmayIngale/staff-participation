@@ -13,6 +13,8 @@ else{
         $sinfo = $row['S_info'];
         $dept = $row['dept'];
     }
+    $sql2 = "SELECT *,DATE_FORMAT(start_date,'%d/%m/%Y') AS sd, DATE_FORMAT(end_date,'%d/%m/%Y') AS ed FROM `$dept` WHERE ssn=$ssn;";
+    $table = mysqli_query($conn, $sql2);
 }
 
 ?>
@@ -67,14 +69,14 @@ else{
     <div class="activity_info">
         <div id="col1" >
             <ul class="list-hover-slide">
-                <li class="btn active"><a href="#">About</a></li>
-                <li class="btn"><a href="#">FDP</a></li>
-                <li class="btn" ><a href="#">STTP</a></li>
-                <li class="btn" ><a href="#">Workshops</a></li>
+                <li data-tab-target="#about" class="btn active"><a>About</a></li>
+                <li data-tab-target="#fdp" class="btn"><a>FDP</a></li>
+                <li data-tab-target="#sttp" class="btn" ><a>STTP</a></li>
+                <li data-tab-target="#workshop" class="btn" ><a>Workshops</a></li>
               </ul>
         </div>
         <div id="col2" >
-          <?php //include("data.php"); ?> 
+          <?php include("data.php"); ?> 
         </div>
     </div>
 </body>

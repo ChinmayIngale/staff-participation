@@ -313,7 +313,7 @@ ul{
     color: #dfdbd9;
   }
   .active a{
-    color: black;
+    color: black !important; 
   }
   .active{
     content: "";

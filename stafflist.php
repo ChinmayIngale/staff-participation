@@ -6,7 +6,7 @@ if(isset($_GET["search"])){
 }
 else{
     if($dept == "All Staff"){
-        $sql="SELECT * FROM `staff`";
+        $sql="SELECT * FROM `staff` ORDER BY `S_post` DESC";
     }
     else{
         $sql ="SELECT * FROM `staff` WHERE dept='$dept'";
