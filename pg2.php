@@ -13,8 +13,7 @@ else{
         $sinfo = $row['S_info'];
         $dept = $row['dept'];
     }
-    $sql2 = "SELECT *,DATE_FORMAT(start_date,'%d/%m/%Y') AS sd, DATE_FORMAT(end_date,'%d/%m/%Y') AS ed FROM `$dept` WHERE ssn=$ssn;";
-    $table = mysqli_query($conn, $sql2);
+    
 }
 
 ?>
@@ -56,18 +55,18 @@ else{
                 <div id="staffname">
                     <h3><?php echo $sname; ?></h3>
                 </div>
-                <div id="staffdes"><?php echo $sinfo; ?> </div>
-            </div>
+            <div id="staffdes"><?php echo $sinfo; ?> </div>
+        </div>
             <div id="staffpic">
                 <div><?php
                     echo '<img src="showimg.php?ssn='.$ssn.'" width="200" height="200">';
                     ?>
                 </div>
-        </div>
+            </div>
         </div>
     </div>
     <div class="activity_info">
-        <div id="col1" >
+        <div id="col1">
             <ul class="list-hover-slide">
                 <li data-tab-target="#about" class="btn active"><a>About</a></li>
                 <li data-tab-target="#fdp" class="btn"><a>FDP</a></li>

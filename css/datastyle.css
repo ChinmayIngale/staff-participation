@@ -1,0 +1,187 @@
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: "Segoe UI", "Open Sans", sans-serif, serif;
+}
+#data_add_button, #select_buttons{
+	text-align: center;
+	position: relative;
+
+}
+#select_buttons{
+	width: 80%;
+	margin: 20px auto 0 auto;
+	display: flex;
+}
+.text{
+	z-index: 3;
+}
+.add_button{
+	height: 70px;
+	width: 49.5%;
+	line-height: 70px;
+	text-align: center;
+	background-color: #DDDDDD;
+	border: none;
+	box-sizing: content-box;
+	border-radius: 10px 10px 0 0;
+	z-index: 2;
+}.add_button:nth-child(1){
+	margin-right: 1%;
+}
+.add_button:before{
+	content: "";
+    display: block;
+    position: absolute;
+	z-index: -1;
+	border: 1px solid #535151;
+	background-color: #F3F3F3;
+	border-bottom: 2px solid #F3F3F3;
+	border-radius: 0;
+	height: 0px;
+	width: 49.5%;
+	top: 100%;
+	transition: top .5s, height .5s, border-radius .5s;
+}
+
+.add_button.active:before{
+	border-radius: 10px 10px 0 0;
+	height: 70px;
+	top: 0%;
+}
+#data_in{
+	width: 90%;
+	background-color: #F3F3F3;
+	margin: 0 auto 50px;
+	border: 1px solid #535151;
+	display: flex;
+	flex-wrap: nowrap;
+	overflow: hidden;
+	scroll-behavior: smooth;
+}
+
+
+
+
+
+
+/* --------------------------Form1---------------------------------------------*/
+
+
+
+
+.form{
+	width: 100%;
+	height: 100%;
+	margin:0;
+	padding: 3em;
+	flex: 0 0 100%;
+	transition: display 5s;
+}
+
+fieldset{
+	min-height: 100px;
+	padding: 10px 20px 20px 20px;
+	margin-bottom: 30px;
+}
+legend{
+	margin-left: 20px;
+	font-size: 1.2em;
+	font-weight: 500;
+}
+.container{
+	display: flex;
+	flex-wrap: wrap;
+}
+.container div{
+	width: 50%;
+}
+#select_staff, #select_dept, #tol, #pi, #year, #sd, #ed{
+	width: 70%;
+	height: 30px;
+	margin: 10px 0;
+}
+#year, #sd, #ed, #nol{
+	width: 50%;
+	height: 30px;
+}
+
+#select_type{
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#FDP, #STTP, #Workshop{
+	margin-left: 100px;
+	margin-right: 5px;
+}
+.type{
+	transform: scale(1.5);
+	margin-top: 10px;
+}
+
+#select_tol, #select_duration, #select_nol{
+	width: 100%;
+	margin: 15px 0;
+	display: flex;
+}
+#select_nol label{
+	margin-right: 10px;
+}
+#submit{
+	text-align: center;
+}
+#upload{
+	height: 60px;
+	width: 200px;
+	color: #fff;
+	background-color: #40e0d0;
+	border-radius: 5px;
+	font-size: 1.1em;
+	font-weight: 500;
+}
+#upload:hover{
+	background-color: #0dc5b2;
+}
+green{
+	color:#2ecc71 ;
+}
+
+.red{
+	color:#e74c3c ;
+}
+
+
+/*--------------------------------staff info----------------------------------*/
+
+#info_parent{
+	display: flex;
+	align-items: center;
+	min-height: 300px;
+	margin: 0 auto;
+	max-width: 1000px;
+  }
+  #staffinfo{
+	width: 50%;
+	margin: 5em;
+  }
+  #staffname h3{
+	color: #0093bc;
+	font-size: 40px;
+	font-weight: 400;
+	text-transform: uppercase;
+	padding: 0;
+	line-height: 1;
+  }
+  #staffdes{
+	margin-bottom: 20px;
+	color: #929292;
+	font-size: 16px;
+	line-height: 1.5;
+  }
+  #staffpic{
+	width: 50%;
+	text-align: center;
+	padding: 40px 20px;
+  }

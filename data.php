@@ -23,7 +23,7 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
-  background-color: grey;
+  background-color: rgba(72, 174, 229, 0.7);
   color: white;
 }
 </style>
@@ -48,7 +48,9 @@
 <tbody>
   
 <?php
-$sr = 1;
+  $sr = 1;
+  $sql2 = "SELECT *,DATE_FORMAT(start_date,'%d/%m/%Y') AS sd, DATE_FORMAT(end_date,'%d/%m/%Y') AS ed FROM `$dept` WHERE ssn=$ssn AND TYPE='fdp' ORDER BY start_date;";
+  $table = mysqli_query($conn, $sql2);
   while($row = $table->fetch_array()){
     
     $ssn = $row['ssn'];
@@ -70,7 +72,7 @@ $sr = 1;
     echo '<td>'.$nol.'</td>';
     echo '</tr>';
     $sr++; 
-}
+  }
 ?>
 </tbody>
 </table>
@@ -92,7 +94,9 @@ $sr = 1;
 <tbody>
   
 <?php
-$sr = 1;
+  $sr = 1;
+  $sql2 = "SELECT *,DATE_FORMAT(start_date,'%d/%m/%Y') AS sd, DATE_FORMAT(end_date,'%d/%m/%Y') AS ed FROM `$dept` WHERE ssn=$ssn AND TYPE='sttp' ORDER BY start_date;";
+  $table = mysqli_query($conn, $sql2);
   while($row = $table->fetch_array()){
     
     $ssn = $row['ssn'];
@@ -136,7 +140,9 @@ $sr = 1;
 <tbody>
   
 <?php
-$sr = 1;
+  $sr = 1;
+  $sql2 = "SELECT *,DATE_FORMAT(start_date,'%d/%m/%Y') AS sd, DATE_FORMAT(end_date,'%d/%m/%Y') AS ed FROM `$dept` WHERE ssn=$ssn AND TYPE='workshop' ORDER BY start_date;";
+  $table = mysqli_query($conn, $sql2);
   while($row = $table->fetch_array()){
     
     $ssn = $row['ssn'];
