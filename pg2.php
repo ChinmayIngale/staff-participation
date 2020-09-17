@@ -24,6 +24,7 @@ else{
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $sname; ?></title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    
 </head>
 <body>
     <header>
@@ -73,6 +74,14 @@ else{
                 <li data-tab-target="#sttp" class="btn" ><a>STTP</a></li>
                 <li data-tab-target="#workshop" class="btn" ><a>Workshops</a></li>
               </ul>
+        </div>
+        <div class="box">
+            <select name="type" id="type" onchange="change(this.value)">
+                <option value="about">About</option>
+                <option value="fdp">FDP</option>
+                <option value="sttp">STTP</option>
+                <option value="workshop">Workshop</option>
+            </select>
         </div>
         <div id="col2" >
             <div id="data">

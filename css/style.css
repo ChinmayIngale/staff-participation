@@ -43,7 +43,7 @@
 h2{
     margin: auto;
     color: #ffffff;
-    font-size: 62px;
+    font-size: 4em;
     font-weight: 400;
     text-transform: uppercase;
     font-style: normal;
@@ -122,6 +122,10 @@ body{
 /*select dept res*/
 .box{
   display: none;
+  width: 100%;
+}
+#type{
+  width: 100%;
 }
 .box select {
   background-color: #0763e475;
@@ -138,9 +142,6 @@ body{
 
 .box select option {
   padding: 30px;
-}
-.box select:focus{
-  margin-bottom: 150px;
 }
 
 /*main page content*/
@@ -226,7 +227,6 @@ body{
   min-height: 500px;
   margin: 0 auto;
   max-width: 1000px;
-  flex-wrap: wrap;
 }
 #staffinfo{
   width: 70%;
@@ -364,15 +364,28 @@ ul{
   .header_name p {
     font-size: 1em;
   }
+  h2{
+    font-size: 3em;
+  }
 }
+
 @media (max-width: 426px) {
   #list{
     margin-left: 0;
   }
-  #sidenav, .header_name{
+  #sidenav, .header_name, #col1{
     display: none;
   }
   .box{
     display: block;
+  }
+  #info_parent, .activity_info{
+    flex-wrap: wrap;
+  }
+  #staffinfo,#staffpic,#col1,#col2{
+    width: 100%;
+  }
+  h2{
+    font-size: 2em;
   }
 }

@@ -36,7 +36,7 @@ document.getElementById("ed").setAttribute("max", today);
 function scrollWin(x, y) {
     document.getElementById("data_in").scrollBy(x, y);
     
-  }
+}
 
   document.addEventListener("DOMContentLoaded", () => {
     dname = "all";

@@ -1,12 +1,4 @@
 
-function isOverflown(element){
-  return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
-}
-const parent = document.querySelector('.img');
-// Show if overflowed
-if(isOverflown(parent)){
-  document.querySelector('.img').className+= " overflow"
-}
 
 const tabs = document.querySelectorAll('[data-tab-target]');
 const tabContents = document.querySelectorAll('.info');
@@ -23,3 +15,11 @@ tabs.forEach(tab => {
     target.className += " show";
   });
 });
+function change(type){
+  const boxContents = document.querySelectorAll('.info');
+  const boxtarget = document.getElementById(type);
+  boxContents.forEach(boxContent => {
+    boxContent.className = boxContent.className.replace(" show", "");
+  })
+  boxtarget.className += " show";
+}
