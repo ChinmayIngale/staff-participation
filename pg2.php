@@ -1,7 +1,7 @@
 <?php
 $guess=$_GET['ssn']??NULL;
 $sql = "SELECT * FROM staff WHERE ssn=$guess;";
-$conn = mysqli_connect("localhost","root","","staff_info");
+$conn = mysqli_connect("localhost","root","","col");
 if (mysqli_connect_error()){
     echo "can't connect to database";
 }
@@ -75,7 +75,9 @@ else{
               </ul>
         </div>
         <div id="col2" >
-          <?php include("data.php"); ?> 
+            <div id="data">
+            <?php include("data.php"); ?> 
+            </div>
         </div>
     </div>
 </body>

@@ -226,10 +226,11 @@ body{
   min-height: 500px;
   margin: 0 auto;
   max-width: 1000px;
+  flex-wrap: wrap;
 }
 #staffinfo{
-  width: 50%;
-  margin: 5em;
+  width: 70%;
+  padding: 5em;
 }
 #staffname h3{
   color: #0093bc;
@@ -256,17 +257,22 @@ body{
 .activity_info{
     display: flex;
     align-items: stretch;
-    height: 200px;
+    min-height: 300px;
     width: 100%;
 }
 #col1{
     width: 25%;
+    height: 100%;
 }
 #col2{
     width: 75%;
     border:1px solid black;
-    height:500px ;
-    z-index: -1;
+    padding: 20px;
+    min-height: 500px;
+}
+#data{
+  height: 100%;
+  width: 100%;
 }
 ul{
     list-style: none;
