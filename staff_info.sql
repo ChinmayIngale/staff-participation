@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2020 at 06:23 PM
+-- Generation Time: Sep 18, 2020 at 04:33 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -75,8 +75,7 @@ INSERT INTO `computer` (`sr.`, `ssn`, `TYPE`, `title_of_linkage`, `participating
 (1, '002', 'Workshop', 'xyz', 'RGIT', 2019, '2019-09-10', '2020-09-13', 'Abc'),
 (2, '005', 'FDP', 'Faculty Exchange(Prof. Vikrant Agaskar)', 'Revenue Department, Government of Maharashtra', 2013, '2013-08-07', '2013-08-07', 'Disaster Recovery System'),
 (3, '011', 'STTP', 'qwertyui', 'SFIT', 2018, '2018-08-17', '2018-08-18', 'tuhdgrdtyfshfbskdjg'),
-(4, '012', 'FDP', 'Faculty Exchange', 'VCET', 2019, '2019-09-12', '2019-09-12', 'cguijbcft'),
-(5, '012', 'STTP', 'xyz', 'abc', 2020, '2020-05-04', '2020-05-06', 'pqr');
+(4, '012', 'FDP', 'Faculty Exchange', 'VCET', 2019, '2019-09-12', '2019-09-12', 'cguijbcft');
 
 -- --------------------------------------------------------
 
@@ -160,9 +159,7 @@ INSERT INTO `it` (`sr.`, `ssn`, `TYPE`, `title_of_linkage`, `participating_insti
 (1, '001', 'STTP', 'asdf', 'VCET', 2018, '2018-03-04', '2018-03-04', 'zxcv'),
 (2, '003', 'STTP', 'Faculty Exchange\r\n', ' Shree L R Tiwari', 2015, '2015-08-06', '2015-08-08', 'IOT in music\r\n'),
 (3, '007', 'STTP', 'Speaker(prof. Anagha Patil)', 'Shree L.R.Tiwari\r\n', 2013, '2013-08-21', '2013-08-21', 'Seminar on Data structure and algorithm'),
-(4, '008', 'FDP', 'Faculty Exchange', 'RAIT', 2015, '2015-08-13', '2015-08-13', 'asdfgh'),
-(5, '003', 'FDP', 'abc', 'xyz', 2020, '2020-09-11', '2020-09-12', 'pqr'),
-(6, '003', 'FDP', 'abc', 'xyz', 2020, '2020-09-09', '2020-09-09', 'pqr');
+(4, '008', 'FDP', 'Faculty Exchange', 'RAIT', 2015, '2015-08-13', '2015-08-13', 'asdfgh');
 
 -- --------------------------------------------------------
 
@@ -261,37 +258,43 @@ INSERT INTO `staff` (`ssn`, `S_name`, `S_post`, `S_info`, `date_of_birth`, `date
 -- Indexes for table `civil`
 --
 ALTER TABLE `civil`
-  ADD PRIMARY KEY (`sr.`);
+  ADD PRIMARY KEY (`sr.`),
+  ADD KEY `test` (`ssn`);
 
 --
 -- Indexes for table `computer`
 --
 ALTER TABLE `computer`
-  ADD PRIMARY KEY (`sr.`);
+  ADD PRIMARY KEY (`sr.`),
+  ADD KEY `computer engineering_ibfk_1` (`ssn`);
 
 --
 -- Indexes for table `electronics and telecommunications`
 --
 ALTER TABLE `electronics and telecommunications`
-  ADD PRIMARY KEY (`sr.`);
+  ADD PRIMARY KEY (`sr.`),
+  ADD KEY `test` (`ssn`);
 
 --
 -- Indexes for table `instrumentation`
 --
 ALTER TABLE `instrumentation`
-  ADD PRIMARY KEY (`sr.`);
+  ADD PRIMARY KEY (`sr.`),
+  ADD KEY `test` (`ssn`);
 
 --
 -- Indexes for table `it`
 --
 ALTER TABLE `it`
-  ADD PRIMARY KEY (`sr.`);
+  ADD PRIMARY KEY (`sr.`),
+  ADD KEY `test` (`ssn`);
 
 --
 -- Indexes for table `mechanical`
 --
 ALTER TABLE `mechanical`
-  ADD PRIMARY KEY (`sr.`);
+  ADD PRIMARY KEY (`sr.`),
+  ADD KEY `test` (`ssn`);
 
 --
 -- Indexes for table `staff`
@@ -313,7 +316,7 @@ ALTER TABLE `civil`
 -- AUTO_INCREMENT for table `computer`
 --
 ALTER TABLE `computer`
-  MODIFY `sr.` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `sr.` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `electronics and telecommunications`
@@ -331,13 +334,53 @@ ALTER TABLE `instrumentation`
 -- AUTO_INCREMENT for table `it`
 --
 ALTER TABLE `it`
-  MODIFY `sr.` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `sr.` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `mechanical`
 --
 ALTER TABLE `mechanical`
   MODIFY `sr.` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `civil`
+--
+ALTER TABLE `civil`
+  ADD CONSTRAINT `civil_ibfk_1` FOREIGN KEY (`ssn`) REFERENCES `staff` (`ssn`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `computer`
+--
+ALTER TABLE `computer`
+  ADD CONSTRAINT `computer_ibfk_1` FOREIGN KEY (`ssn`) REFERENCES `staff` (`ssn`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `electronics and telecommunications`
+--
+ALTER TABLE `electronics and telecommunications`
+  ADD CONSTRAINT `electronics and telecommunications_ibfk_1` FOREIGN KEY (`ssn`) REFERENCES `staff` (`ssn`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `instrumentation`
+--
+ALTER TABLE `instrumentation`
+  ADD CONSTRAINT `instrumentation_ibfk_1` FOREIGN KEY (`ssn`) REFERENCES `staff` (`ssn`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `it`
+--
+ALTER TABLE `it`
+  ADD CONSTRAINT `it_ibfk_1` FOREIGN KEY (`ssn`) REFERENCES `staff` (`ssn`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `mechanical`
+--
+ALTER TABLE `mechanical`
+  ADD CONSTRAINT `mechanical_ibfk_1` FOREIGN KEY (`ssn`) REFERENCES `staff` (`ssn`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
