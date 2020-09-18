@@ -132,34 +132,71 @@
 			</form> 
 		</div>
 		<div id="new" class="form">
-			<p>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam temporibus sed, obcaecati vel numquam quo dignissimos natus iure, rerum laudantium aliquam recusandae cumque maiores accusantium deleniti voluptatem voluptatibus cum!
-			</p>
+		<form id="newf">
+			<div class="container">
+				<div>
+					<label for="sname">Staff Name:</label><br>
+					<input type="text" id="sname" name="sname" required/><br>
+
+					<label for="designation">Staff Designation:</label><br>
+					<input type="text" id="designation" name="designation" required/><br>
+
+					<label for="department">Department:</label><br>
+					<select id="department" name="department" required ><br>
+						<option value="">--Select Department--</option>
+						<option id="Mechanical" value="mechanical">Mechanical Department</option>
+						<option id="Electronics And Telecommunications" value="Electronics And Telecommunications">EXTC Department</option>
+						<option id="Instrumentation" value="instrumentation">Instrumentation Department</option>
+						<option id="Computer" value="computer">Computer Department</option>
+						<option id="IT" value="it">IT Department</option>
+						<option id="Civil" value="civil">Civil Department</option>
+					</select> 
+				</div>
+				<div id="staffpic" style="text-align: center;padding: 20px 20px;">
+					<div id="dash">
+					<img src="images/addimg.png" id="preview" width="100%" height="100%"/>
+					<input type="file" id="image" name="image" accept="image/*">
+					</div>
+				</div>
+				<div>
+					<label for="dob">Date of Birth:</label><br>
+					<input type="date" id="dob" name="dob" required><br>
+
+					<label for="doji">Date of Joining the Institute:</label><br>
+					<input type="date" id="doji" name="doji" required><br>
+
+					<label for="experiance">Total experiance In Years:</label><br>
+					<input type="text" id="experiance" name="experiance" required><br>
+
+					<label for="qualification">Qualification with class/grade:</label><br>
+					<input type="text" id="qualification" name="qualification" required><br>
+
+					<label for="papers">Total Papers Published:</label><br>
+					<input type="text" id="papers" name="papers"><br>
+
+					<label for="books">Total Books Published</label><br>
+					<input type="text" id="books" name="books"><br>
+				</div>
+				<div>
+					<label for="email">Email:</label><br>
+					<input type="Email" id="email" name="email" required><br>
+
+					<label for="info">Staff Information:</label><br>
+					<textarea id="info" name="info" required></textarea><br>
+
+					<label for="memberships">Professional memberships:</label><br>
+					<textarea id="memberships" name="memberships"></textarea><br>
+
+					<label for="awards">Awards:</label><br>
+					<textarea id="awards" name="awards"></textarea><br>
+				</div>
+
+				<div id="submit">
+					<input type="submit" id="upload" name="upload" value="Upload" form="newf">
+					<p id="status"></p>
+				</div>
+			</div>
+		</form>
 		</div>
 	</div>
 	</div>

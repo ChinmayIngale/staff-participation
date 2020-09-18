@@ -385,6 +385,10 @@ ul{
   #staffinfo,#staffpic,#col1,#col2{
     width: 100%;
   }
+  #staffinfo,#staffpic{
+    padding: 2em;
+    text-align: center;
+  }
   h2{
     font-size: 2em;
   }

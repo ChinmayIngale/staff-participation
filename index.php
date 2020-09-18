@@ -65,12 +65,6 @@
             </select>
             </div>
             <?php
-            /*
-            $doc = new DOMDocument();
-            $doc->loadHTMLFile("index.php");
-            $dept = $doc->getElementById('activedept')->textContent;
-            echo $dept;*/
-            
             include("stafflist.php");
             ?>
         </div>

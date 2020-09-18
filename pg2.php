@@ -1,7 +1,7 @@
 <?php
 $guess=$_GET['ssn']??NULL;
 $sql = "SELECT * FROM staff WHERE ssn=$guess;";
-$conn = mysqli_connect("localhost","root","","col");
+$conn = mysqli_connect("localhost","root","","staff_info");
 if (mysqli_connect_error()){
     echo "can't connect to database";
 }

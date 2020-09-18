@@ -6,9 +6,9 @@ tabs.forEach(tab=> {
     current[0].className = current[0].className.replace(" active", "");
     this.className += " active";
     });
-})
-var date = new Date();
+});
 
+var date = new Date();
 var start = date.getFullYear();
 var end = 1990;
 var options = "";
@@ -32,13 +32,31 @@ var yyyy = date.getFullYear();
 var today = yyyy+'-'+mm+'-'+dd;
 document.getElementById("sd").setAttribute("max", today);
 document.getElementById("ed").setAttribute("max", today);
+document.getElementById("dob").setAttribute("max", today);
+document.getElementById("doji").setAttribute("max", today);
 
 function scrollWin(x, y) {
     document.getElementById("data_in").scrollBy(x, y);
     
 }
 
-  document.addEventListener("DOMContentLoaded", () => {
+const img = document.querySelector("#preview");
+const select = document.querySelector("#image");
+img.addEventListener('click', function() {
+    select.click();
+});
+select.addEventListener("change",function(event){
+    var reader = new FileReader();
+    reader.onload = function(){
+        if(reader.readyState == 2){
+            img.src = reader.result;
+        }
+    }
+    reader.readAsDataURL(event.target.files[0]);
+
+});
+
+document.addEventListener("DOMContentLoaded", () => {
     dname = "all";
     var dept = document.querySelector("#select_dept");
     dept.addEventListener("change", function(){

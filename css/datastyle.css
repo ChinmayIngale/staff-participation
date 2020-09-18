@@ -10,7 +10,7 @@
 
 }
 #select_buttons{
-	width: 80%;
+	width: 50%;
 	margin: 20px auto 0 auto;
 	display: flex;
 }
@@ -51,7 +51,7 @@
 	top: 0%;
 }
 #data_in{
-	width: 90%;
+	width: 60%;
 	background-color: #F3F3F3;
 	margin: 0 auto 50px;
 	border: 1px solid #535151;
@@ -97,10 +97,12 @@ legend{
 .container div{
 	width: 50%;
 }
-#select_staff, #select_dept, #tol, #pi, #year, #sd, #ed{
-	width: 70%;
+#select_staff, #select_dept, #tol, #pi, #year, #sd, #ed, #sname, #designation,
+#department, #email, #dob, #doji, #experiance, #qualification, #papers, #books,
+#info, #memberships, #awards{
+	width: 85%;
 	height: 30px;
-	margin: 10px 0;
+	margin: 10px 0 20px 0;
 }
 #year, #sd, #ed, #nol{
 	width: 50%;
@@ -109,7 +111,7 @@ legend{
 
 #select_type{
 	width: 100%;
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 }
 
 #FDP, #STTP, #Workshop{
@@ -123,34 +125,43 @@ legend{
 
 #select_tol, #select_duration, #select_nol{
 	width: 100%;
-	margin: 15px 0;
+	margin: 10px 0;
 	display: flex;
 }
 #select_nol label{
 	margin-right: 10px;
 }
+#dash{
+	width: 200px;
+	height: 200px;
+	margin: auto ;
+	border: 4px dashed #999;
+	border-radius: 5px;
+    opacity: 1;
+}
+#image{
+	display: none;
+}
+#info, #memberships, #awards{
+	height: 100px;
+}
 #submit{
 	text-align: center;
+	width: 100%;
 }
 #upload{
-	height: 60px;
-	width: 200px;
+	height: 40px;
+	width: 150px;
 	color: #fff;
 	background-color: #40e0d0;
-	border-radius: 5px;
+	border-radius: 20px;
 	font-size: 1.1em;
 	font-weight: 500;
 }
 #upload:hover{
 	background-color: #0dc5b2;
 }
-green{
-	color:#2ecc71 ;
-}
 
-.red{
-	color:#e74c3c ;
-}
 
 
 /*--------------------------------staff info----------------------------------*/
@@ -183,5 +194,5 @@ green{
   #staffpic{
 	width: 50%;
 	text-align: center;
-	padding: 40px 20px;
+	padding: 20px 20px;
   }
