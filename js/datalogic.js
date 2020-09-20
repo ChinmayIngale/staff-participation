@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", () => {
+
 //select active button
 
 
@@ -14,7 +16,7 @@ tabs.forEach(tab=> {
 //scroll
 
 
-function scrollWin(x, y) {
+scrollWin = function(x, y) {
     document.getElementById("data_in").scrollBy(x, y);
     
 }
@@ -114,7 +116,7 @@ function checkvalid(){
 // backend connection for staff info
 
 
-document.addEventListener("DOMContentLoaded", () => {
+
     dname = "all";
     var dept = document.querySelector("#select_dept");
     dept.addEventListener("change", function(){
@@ -133,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
             data:"dname=" + dname
         }).done(function(sname){
             document.querySelector("#select_staff").innerHTML= sname;
-            document.querySelector("#infoo").innerHTML= "";
+            document.querySelector("#information").innerHTML= "";
         })
     }
 
@@ -146,9 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-
-    var staff = document.querySelector("#select_staff");
-    staff.addEventListener("change", function(){
+    function getInfo(){
         var ssn = staff.value;
         var e = FindByAttributeValue("value", ssn, "option");
         var deptname = e.getAttribute("title");
@@ -164,8 +164,23 @@ document.addEventListener("DOMContentLoaded", () => {
             method:"post",
             data:"ssn=" + ssn
         }).done(function(sname){
-            document.querySelector("#infoo").innerHTML= sname;
+            document.querySelector("#information").innerHTML= sname;
         })
 
-    });
+    }
+    var staff = document.querySelector("#select_staff");
+    staff.addEventListener("change", getInfo);
+
+    deleteInfo = function(dept,sr){
+        console.log(dept);
+        $.ajax({
+            url:"delete.php",
+            method:"post",
+            data:{"table":dept,"row": sr}
+        }).done(function(data){
+            document.querySelector("#try").innerHTML= data;
+            getInfo();
+        })
+    }
+    
   }); 

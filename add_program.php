@@ -79,6 +79,7 @@
 <title>Add Staff Activity </title>
 <link rel="stylesheet" href="css/datastyle.css">
 <script src="js/jquery-3.5.1.min.js"></script>
+<script src="js/datalogic.js"></script>
 </head>
 
 
@@ -118,12 +119,13 @@
 						</select> 
 					</div>
 					</div>
-					<div id="infoo"> 
-						
+					<div id="information">
+					
 					</div>
+					<div id="try"></div>
 				</fieldset>
 				<fieldset>
-					<legend>Add program info:</legend>
+					<legend>Add New Program:</legend>
 					<div class="container">
 						<div id="select_type">
 							<label for="select_type">Program type:<sup class="red">*</sup></label><br>
@@ -258,7 +260,7 @@
 	</div>
 	</div>
 </body>
-<script src="js/datalogic.js"></script>
+
 <script>
     if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );
