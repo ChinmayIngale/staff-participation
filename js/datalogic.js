@@ -1,3 +1,6 @@
+//select active button
+
+
 var tabs = document.querySelectorAll(".add_button");
 const tabContents = document.querySelectorAll('.form');
 tabs.forEach(tab=> {
@@ -7,6 +10,18 @@ tabs.forEach(tab=> {
     this.className += " active";
     });
 });
+
+//scroll
+
+
+function scrollWin(x, y) {
+    document.getElementById("data_in").scrollBy(x, y);
+    
+}
+
+
+//validation
+//form 1
 
 var date = new Date();
 var start = date.getFullYear();
@@ -32,13 +47,13 @@ var yyyy = date.getFullYear();
 var today = yyyy+'-'+mm+'-'+dd;
 document.getElementById("sd").setAttribute("max", today);
 document.getElementById("ed").setAttribute("max", today);
+
+
+//form 2
+
+
 document.getElementById("dob").setAttribute("max", today);
 document.getElementById("doji").setAttribute("max", today);
-
-function scrollWin(x, y) {
-    document.getElementById("data_in").scrollBy(x, y);
-    
-}
 
 const img = document.querySelector("#preview");
 const select = document.querySelector("#image");
@@ -55,6 +70,49 @@ select.addEventListener("change",function(event){
     reader.readAsDataURL(event.target.files[0]);
 
 });
+
+function checkvalid(){
+    var name = document.querySelector("#sname");
+    var designation = document.querySelector("#designation");
+    var qualification = document.querySelector("#qualification");
+    var info = document.querySelector("#info");
+
+    name.setCustomValidity("");
+    if(name.value.trim() == ""){
+        name.setCustomValidity("please fill out this field");
+    }
+    name.oninput = function(e) {
+        e.target.setCustomValidity("");
+    };
+
+    designation.setCustomValidity("");
+    if(designation.value.trim() == ""){
+        designation.setCustomValidity("please fill out this field");
+    }
+    designation.oninput = function(e) {
+        e.target.setCustomValidity("");
+    };
+
+    qualification.setCustomValidity("");
+    if(qualification.value.trim() == ""){
+        qualification.setCustomValidity("please fill out this field");
+    }
+    qualification.oninput = function(e) {
+        e.target.setCustomValidity("");
+    };
+
+    info.setCustomValidity("");
+    if(info.value.trim() == ""){
+        info.setCustomValidity("please fill out this field");
+    }
+    info.oninput = function(e) {
+        e.target.setCustomValidity("");
+    };
+    
+}
+
+// backend connection for staff info
+
 
 document.addEventListener("DOMContentLoaded", () => {
     dname = "all";
