@@ -32,7 +32,7 @@ else{
                    <h3 class="teacher_name">'.$sname.'</h3>
                 </div>
                 <div class="des">
-                    <p >'.$spost.' '.$semail.'</p>
+                    <p >'.strtoupper($spost).' '.$semail.'</p>
                 </div>
                 </a></div>';
     }

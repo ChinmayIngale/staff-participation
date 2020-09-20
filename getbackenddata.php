@@ -20,7 +20,7 @@ if(isset($_POST["dname"])){
         
     }
 }
-
+   
 if(isset($_POST["ssn"])){
     $conn = mysqli_connect("localhost","root","","staff_info");
     if (mysqli_connect_error()){

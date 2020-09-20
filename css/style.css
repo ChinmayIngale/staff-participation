@@ -190,7 +190,7 @@ body{
   }
 
 .image img{
-  width: 250px;
+  width: 100%;
   height: 250px;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
@@ -200,7 +200,9 @@ body{
   text-align: center;
   padding: 10px;
  }
-
+.teacher_name{
+  text-transform: uppercase;
+}
  .card a:link, .card a:visited{
    text-decoration: none;
    color: black;

@@ -56,7 +56,7 @@
     $memberships = $row['professional_memberships'];
     $books = $row['books_published'];
     $awards = $row['awards'];
-    echo '<tr class="about_tr"><th class="about_th">designation</th><td class="about_td">'.$designation.'</td></tr>';
+    echo '<tr class="about_tr"><th class="about_th">designation</th><td class="about_td">'.strtoupper($designation).'</td></tr>';
     echo '<tr class="about_tr"><th class="about_th">department</th><td class="about_td">'.$department.'</td></tr>';
     echo '<tr class="about_tr"><th class="about_th">date of birth</th><td class="about_td">'.$dob.'</td></tr>';
     echo '<tr class="about_tr"><th class="about_th">date of joining the institution</th><td class="about_td">'.$doji.'</td></tr>';

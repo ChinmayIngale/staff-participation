@@ -97,17 +97,14 @@ legend{
 .container div{
 	width: 50%;
 }
-#select_staff, #select_dept, #tol, #pi, #year, #sd, #ed, #sname, #designation,
+#select_staff, #select_dept, #tol, #pi, #year, #sd, #ed, #nol, #sname, #designation,
 #department, #email, #dob, #doji, #experiance, #qualification, #papers, #books,
 #info, #memberships, #awards{
 	width: 85%;
 	height: 30px;
 	margin: 10px 0 20px 0;
 }
-#year, #sd, #ed, #nol{
-	width: 50%;
-	height: 30px;
-}
+
 
 #select_type{
 	width: 100%;
@@ -127,9 +124,6 @@ legend{
 	width: 100%;
 	margin: 10px 0;
 	display: flex;
-}
-#select_nol label{
-	margin-right: 10px;
 }
 #dash{
 	width: 200px;
@@ -151,6 +145,10 @@ legend{
 #submit{
 	text-align: center;
 	width: 100%;
+}
+.red{
+	color: red;
+	font-size: 16px;
 }
 #upload{
 	height: 40px;

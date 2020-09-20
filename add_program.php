@@ -100,19 +100,19 @@
 					<legend>Select staff:</legend>
 					<div class="container">
 					<div>
-						<label for="select_dept">*Select department:</label><br>
+						<label for="select_dept">Select Department:<sup class="red">*</sup></label><br>
 						<select id="select_dept" name="sdept" required >
 							<option value="">--Select Department--</option>
 							<option class="do" id="Mechanical" value="mechanical">Mechanical Department</option>
 							<option class="do" id="Electronics And Telecommunications" value="Electronics And Telecommunications">EXTC Department</option>
-							<option class="do" id="Instrumentation" value="instrumentation">Instrumentation Department</option>
-							<option class="do" id="Computer" value="computer">Computer Department</option>
-							<option class="do" id="IT" value="it">IT Department</option>
-							<option class="do" id="Civil" value="civil">Civil Department</option>
+							<option class="do" id="Instrumentation" value="Instrumentation">Instrumentation Department</option>
+							<option class="do" id="Computer" value="Computer">Computer Department</option>
+							<option class="do" id="IT" value="IT">IT Department</option>
+							<option class="do" id="Civil" value="Civil">Civil Department</option>
 						</select> 
 					</div>
 					<div>
-						<label for="select_staff">*Select staff:</label><br>
+						<label for="select_staff">Select Staff:<sup class="red">*</sup></label><br>
 						<select id="select_staff" name="sstaff" required >
 						<option value=''>--Select Staff--</option>
 						</select> 
@@ -126,41 +126,43 @@
 					<legend>Add program info:</legend>
 					<div class="container">
 						<div id="select_type">
-							<label for="select_type">*Program type:</label><br>
+							<label for="select_type">Program type:<sup class="red">*</sup></label><br>
 							<input class="type" type="radio" id="FDP" style="margin-left: 0;" name="type" value="FDP" required >
 							<label class="type" for="FDP">FDP</label>
 							<input class="type" type="radio" id="STTP" name="type" value="STTP" required>
 							<label class="type" for="STTP">STTP</label>
 							<input class="type" type="radio" id="Workshop" name="type" value="Wrokshop" required >
-							<label class="type" for="Workshop">Wrokshop</label>
+							<label class="type" for="Workshop">Workshop</label>
 						</div>
 						<div id="select_tol">
 							<div>
-							<label for="tol">*Title of linkage:</label><br>
+							<label for="tol">Title of linkage:<sup class="red">*</sup></label><br>
 							<input type="text" id="tol" name="tol" placeholder="Title of linkage" required >
 							</div>
 							<div>
-							<label for="pi">*Participating institute:</label><br>
+							<label for="pi">Participating Institute:<sup class="red">*</sup></label><br>
 							<input type="text" id="pi" name="pi" placeholder="Participating institute" required >
 							</div>
 						</div>
 						<div id="select_duration">
 							<div>
-							<label for="year">*Year:</label>
-							<select id="year" name="year" required ></select>
-							</div>
-							<div>
-							<label for="sd">*Start date:</label>
+							<label for="sd">Start date:<sup class="red">*</sup></label><br>
 							<input type="date" id="sd" name="sd" required>
 							</div>
 							<div>
-							<label for="ed">*End date:</label>
+							<label for="ed">End date:<sup class="red">*</sup></label><br>
 							<input type="date" id="ed" name="ed" required >
 							</div>
 						</div>
 						<div id="select_nol">
-							<label for="nol">*Nature of linkage:</label>
+							<div>
+							<label for="year">Year:<sup class="red">*</sup></label><br>
+							<select id="year" name="year" required ></select>
+							</div>
+							<div>
+							<label for="nol">Nature of linkage:<sup class="red">*</sup></label><br>
 							<input type="text" id="nol" name="nol" placeholder="Nature of linkage" required>
+							</div>
 						</div>
 				</fieldset>
 				<div id="submit">
@@ -181,21 +183,21 @@
 		<form id="newf" method="post" enctype="multipart/form-data">
 			<div class="container">
 				<div>
-					<label for="sname">*Staff Name:</label><br>
+					<label for="sname">Staff Name:<sup class="red">*</sup></label><br>
 					<input type="text" id="sname" name="sname" placeholder="Staff Name" required/><br>
 
-					<label for="designation">*Staff Designation:</label><br>
+					<label for="designation">Staff Designation:<sup class="red">*</sup></label><br>
 					<input type="text" id="designation" name="designation" placeholder="Staff Post" required/><br>
 
-					<label for="department">*Department:</label><br>
+					<label for="department">Department:<sup class="red">*</sup></label><br>
 					<select id="department" name="department" required ><br>
 						<option value="">--Select Department--</option>
-						<option id="Mechanical" value="mechanical">Mechanical Department</option>
+						<option id="Mechanical" value="Mechanical">Mechanical Department</option>
 						<option id="Electronics And Telecommunications" value="Electronics And Telecommunications">EXTC Department</option>
-						<option id="Instrumentation" value="instrumentation">Instrumentation Department</option>
-						<option id="Computer" value="computer">Computer Department</option>
-						<option id="IT" value="it">IT Department</option>
-						<option id="Civil" value="civil">Civil Department</option>
+						<option id="Instrumentation" value="Instrumentation">Instrumentation Department</option>
+						<option id="Computer" value="Computer">Computer Department</option>
+						<option id="IT" value="IT">IT Department</option>
+						<option id="Civil" value="Civil">Civil Department</option>
 					</select> 
 				</div>
 				<div id="staffpic" style="padding: 0 20px;">
@@ -206,29 +208,29 @@
 					
 				</div>
 				<div>
-					<label for="dob">*Date of Birth:</label><br>
+					<label for="dob">Date of Birth:<sup class="red">*</sup></label><br>
 					<input type="date" id="dob" name="dob" required><br>
 
-					<label for="doji">*Date of Joining the Institute:</label><br>
+					<label for="doji">Date of Joining the Institute:<sup class="red">*</sup></label><br>
 					<input type="date" id="doji" name="doji" required><br>
 
-					<label for="experiance">*Total experiance In Years:</label><br>
+					<label for="experiance">Total experiance In Years:<sup class="red">*</sup></label><br>
 					<input type="text" id="experiance" name="experiance" pattern="[0-9]+" placeholder="eg: 7" required><br>
 
-					<label for="qualification">*Qualification with class/grade:</label><br>
+					<label for="qualification">Qualification with class/grade:<sup class="red">*</sup></label><br>
 					<input type="text" id="qualification" name="qualification" placeholder="Staff Qualification" required><br>
 
 					<label for="papers">Total Papers Published:</label><br>
 					<input type="text" id="papers" name="papers" pattern="[0-9]+" placeholder="In numbers(left blank if none)"><br>
 
-					<label for="books">Total Books Published</label><br>
+					<label for="books">Total Books Published:</label><br>
 					<input type="text" id="books" name="books" pattern="[0-9]+" placeholder="In numbers(left blank if none)"><br>
 				</div>
 				<div>
-					<label for="email">*Email:</label><br>
+					<label for="email">Email:<sup class="red">*</sup></label><br>
 					<input type="Email" id="email" name="email" required placeholder="example@vcet.edu.in "><br>
 
-					<label for="info">*Staff Information:</label><br>
+					<label for="info">Staff Information:<sup class="red">*</sup></label><br>
 					<textarea id="info" name="info" required placeholder="Some Info about staff"></textarea><br>
 
 					<label for="memberships">Professional memberships:</label><br>
