@@ -63,6 +63,7 @@
 <body>
 	<header style="background-color: turquoise;">
 		<nav id="header">
+			<div id="name">
             <div class="header_logo">
               <a href="https://www.vcet.edu.in/">
                 <div id="logo-img"></div>
@@ -71,7 +72,11 @@
               <div class="header_name">
                 <a href="https://www.vcet.edu.in/"><h1>Vidyavardhini's College Of Engineering & Technology</h1></a>
                 <p>विद्यावर्धिनीचे अभियांत्रिकी आणि तंत्रज्ञान महाविद्यालय, वसई</p>
-              </div>
+			  </div>
+			</div>
+			<div class="right_btn">
+				<a href="main_page.php"><button id="main_page">View Page</button></a>
+			</div>
 		</nav>
 	</header>
 	<div id="main">

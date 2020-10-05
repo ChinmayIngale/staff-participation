@@ -9,8 +9,12 @@
  /*header*/
  #header{
 	display: flex;
-  
-   }
+	justify-content: space-between;
+	align-items: center;
+	}
+	#name{
+		display: flex;
+	}
    #logo-img {
 	background: url('../images/clg_logo.png');
 	background-repeat: no-repeat;
@@ -39,6 +43,18 @@
   }
   .header_name a, .header_name a:focus {
 	text-decoration: none;
+  }
+  .right_btn{
+	  float: right !important;
+  }
+  #main_page{
+	margin: 30px;
+    padding: 15px 20px;
+    font-size: 1.2em;
+    border-radius: 5px;
+  }
+  #main_page:hover{
+	  background-color: #ddd;
   }
 
 
