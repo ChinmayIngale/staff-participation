@@ -23,36 +23,17 @@ scrollWin = function(x, y) {
 
 
 //validation
-//form 1
+//form 2
 
 var date = new Date();
 var start = date.getFullYear();
-var end = 1990;
-var options = "";
-while(end <= start){
-    options += "<option value='"+start+"'>"+ start +"</option>";
-    start -= 1;
-}
-document.getElementById("year").innerHTML = options;
-
 var date = new Date();
 var dd = date.getDate();
-var mm = date.getMonth()+1; //January is 0
+var mm = date.getMonth()+1;
+
+ //January is 0
 var yyyy = date.getFullYear();
- if(dd<10){
-        dd='0'+dd
-    } 
-    if(mm<10){
-        mm='0'+mm
-    } 
-
 var today = yyyy+'-'+mm+'-'+dd;
-document.getElementById("sd").setAttribute("max", today);
-document.getElementById("ed").setAttribute("max", today);
-
-
-//form 2
-
 
 document.getElementById("dob").setAttribute("max", today);
 document.getElementById("doji").setAttribute("max", today);
@@ -117,10 +98,10 @@ function checkvalid(){
 
 
 
-    dname = "all";
+    var dname = "all";
     var dept = document.querySelector("#select_dept");
     dept.addEventListener("change", function(){
-        var dname = dept.value;
+        dname = dept.value;
         loadstaffcontent(dname);
         
     });
@@ -136,6 +117,7 @@ function checkvalid(){
         }).done(function(sname){
             document.querySelector("#select_staff").innerHTML= sname;
             document.querySelector("#information").innerHTML= "";
+            document.querySelector("#try").innerHTML= "";
         })
     }
 
@@ -181,6 +163,10 @@ function checkvalid(){
             document.querySelector("#try").innerHTML= data;
             getInfo();
         })
+    }
+
+    modifyInfo = function(dept,sr){
+        document.querySelector("#tsr").value=sr;
     }
     
   }); 

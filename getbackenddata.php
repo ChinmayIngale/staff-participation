@@ -1,4 +1,5 @@
 <?php
+session_start();
 if(isset($_POST["dname"])){
     $conn = mysqli_connect("localhost","root","","staff_info");
     if (mysqli_connect_error()){
@@ -35,6 +36,9 @@ if(isset($_POST["ssn"])){
             $info = $row['S_info'];
             $ssn = $row['ssn'];
             $dept = $row['dept'];
+            $_SESSION['name'] = $name; 
+            $_SESSION['dept'] = $dept; 
+            $_SESSION['ssn'] = $ssn; 
             echo '<div id="bio">';
             echo '<div id="info_parent">';
 			echo '<div id="staffinfo">';
@@ -93,13 +97,22 @@ if(isset($_POST["ssn"])){
                 echo '<td class="data_td">'.$sd.'</td>';
                 echo '<td class="data_td">'.$ed.'</td>';
                 echo '<td class="data_td">'.$nol.'</td>';
-                echo '<td class="data_td"><button onClick="deleteInfo('.'`'.$dept.'`'.','.$tsr.')">Delete</button></td>';
+                echo '<td class="data_td">
+                        <form id="deletef">
+                        <button class="operation" id="del" form="deletef" onClick="deleteInfo('.'`'.$dept.'`'.','.$tsr.')"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                        </form>
+                        <button name="update" class="operation" id="update" onClick="modifyInfo('.'`'.$dept.'`'.','.$tsr.')"><i class="fa fa-pencil" aria-hidden="true"></i> Modify</button>
+                    </td>';
                 echo '</tr>';
                 $sr++; 
             }
             echo '</tbody>
             </table>';
             echo '</div>';
+            echo '<div id="submit">';
+            echo '<button id="newprg" name="newprg" type="submit"><i class="fa fa-plus" aria-hidden="true"></i> Add new program</button>';
+            echo '</div>';
+            
         }
         
     }

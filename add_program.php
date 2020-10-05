@@ -1,29 +1,5 @@
 <?php
-	$status1="";
-	if(isset($_POST['upload1'])){
-		$department = $_POST['sdept'];
-		$ssn = $_POST['sstaff'];
-		$type = $_POST['type'];
-		$tol = $_POST['tol'];
-		$pi = $_POST['pi'];
-		$year = $_POST['year'];
-		$sd = $_POST['sd'];
-		$ed = $_POST['ed'];
-		$nol = $_POST['nol'];
-		$conn = mysqli_connect("localhost","root","","staff_info");
-		if (mysqli_connect_error()){
-			echo "can't connect to database";
-		}
-		else{
-			$submit_query = "INSERT INTO `$department`(`ssn`, `TYPE`, `title_of_linkage`, `participating_institute`, `year`, `start_date`, `end_date`, `nature_of_linkage`) VALUES ('$ssn','$type','$tol','$pi','$year','$sd','$ed','$nol');";
-			if(mysqli_query($conn, $submit_query)){
-				$status1 = "success";
-			} else {
-				$status1 = "fail";
-			}
-		}
-	}
-
+	session_start();
 	$status2="";
 	if(isset($_POST['upload2'])){
 		$sname = $_POST['sname'];
@@ -77,6 +53,7 @@
 <head>
 <meta charset="utf-8">
 <title>Add Staff Activity </title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/datastyle.css">
 <script src="js/jquery-3.5.1.min.js"></script>
 <script src="js/datalogic.js"></script>
@@ -90,14 +67,13 @@
 		<div id="select_buttons">
 		<!--<div onclick="location.href='#exist';" class="add_button active"><span class="text">Add program in existing staff </span></div>
 		<div onclick="location.href='#new';" class="add_button"><span class="text">Add program of new staff</span></div>-->
-		<div onclick="scrollWin(-20000, 0)" class="add_button active"><span class="text">Add program in existing staff </span></div>
-		<div onclick="scrollWin(20000, 0)" class="add_button"><span class="text">Add program of new staff</span></div>
+		<div onclick="scrollWin(-20000, 0)" class="add_button active"><span class="text">Add program in Existing Staff </span></div>
+		<div onclick="scrollWin(20000, 0)" class="add_button"><span class="text">Add New Staff</span></div>
 		</div>
 	</div>
 	<div id="data_in">
 		<div id="exist" class="form">
-			<form id="existf" method="post">
-				<fieldset>
+			<form id="existf" method="post" action="addnew.php">
 					<legend>Select staff:</legend>
 					<div class="container">
 					<div>
@@ -105,10 +81,10 @@
 						<select id="select_dept" name="sdept" required >
 							<option value="">--Select Department--</option>
 							<option class="do" id="Mechanical" value="mechanical">Mechanical Department</option>
-							<option class="do" id="Electronics And Telecommunications" value="Electronics And Telecommunications">EXTC Department</option>
+							<option class="do" id="Electronics And Telecommunications" value="Electronics And Telecommunications">Electronics And Telecommunications Department</option>
 							<option class="do" id="Instrumentation" value="Instrumentation">Instrumentation Department</option>
 							<option class="do" id="Computer" value="Computer">Computer Department</option>
-							<option class="do" id="IT" value="IT">IT Department</option>
+							<option class="do" id="Information Technology" value="Information Technology">Information Technology Department</option>
 							<option class="do" id="Civil" value="Civil">Civil Department</option>
 						</select> 
 					</div>
@@ -116,69 +92,14 @@
 						<label for="select_staff">Select Staff:<sup class="red">*</sup></label><br>
 						<select id="select_staff" name="sstaff" required >
 						<option value=''>--Select Staff--</option>
-						</select> 
+						</select>
+						<input type="hidden" id="tsr" name="tsr" required>
 					</div>
 					</div>
 					<div id="information">
 					
 					</div>
 					<div id="try"></div>
-				</fieldset>
-				<fieldset>
-					<legend>Add New Program:</legend>
-					<div class="container">
-						<div id="select_type">
-							<label for="select_type">Program type:<sup class="red">*</sup></label><br>
-							<input class="type" type="radio" id="FDP" style="margin-left: 0;" name="type" value="FDP" required >
-							<label class="type" for="FDP">FDP</label>
-							<input class="type" type="radio" id="STTP" name="type" value="STTP" required>
-							<label class="type" for="STTP">STTP</label>
-							<input class="type" type="radio" id="Workshop" name="type" value="Wrokshop" required >
-							<label class="type" for="Workshop">Workshop</label>
-						</div>
-						<div id="select_tol">
-							<div>
-							<label for="tol">Title of linkage:<sup class="red">*</sup></label><br>
-							<input type="text" id="tol" name="tol" placeholder="Title of linkage" required >
-							</div>
-							<div>
-							<label for="pi">Participating Institute:<sup class="red">*</sup></label><br>
-							<input type="text" id="pi" name="pi" placeholder="Participating institute" required >
-							</div>
-						</div>
-						<div id="select_duration">
-							<div>
-							<label for="sd">Start date:<sup class="red">*</sup></label><br>
-							<input type="date" id="sd" name="sd" required>
-							</div>
-							<div>
-							<label for="ed">End date:<sup class="red">*</sup></label><br>
-							<input type="date" id="ed" name="ed" required >
-							</div>
-						</div>
-						<div id="select_nol">
-							<div>
-							<label for="year">Year:<sup class="red">*</sup></label><br>
-							<select id="year" name="year" required ></select>
-							</div>
-							<div>
-							<label for="nol">Nature of linkage:<sup class="red">*</sup></label><br>
-							<input type="text" id="nol" name="nol" placeholder="Nature of linkage" required>
-							</div>
-						</div>
-				</fieldset>
-				<div id="submit">
-				<input type="submit" id="upload" name="upload1" value="Upload" form="existf">
-				<p id="status">
-					<?php
-						if($status1 == "success"){
-							echo "<script>alert('New record created successfully')</script>";
-						} else if($status1 == "fail") {
-							echo "<script>alert('Error while uploading data')</script>";
-						}
-					?>
-				</p>
-				</div>
 			</form> 
 		</div>
 		<div id="new" class="form">
@@ -195,10 +116,10 @@
 					<select id="department" name="department" required ><br>
 						<option value="">--Select Department--</option>
 						<option id="Mechanical" value="Mechanical">Mechanical Department</option>
-						<option id="Electronics And Telecommunications" value="Electronics And Telecommunications">EXTC Department</option>
+						<option id="Electronics And Telecommunications" value="Electronics And Telecommunications">Electronics And Telecommunications Department</option>
 						<option id="Instrumentation" value="Instrumentation">Instrumentation Department</option>
 						<option id="Computer" value="Computer">Computer Department</option>
-						<option id="IT" value="IT">IT Department</option>
+						<option id="Information Technology" value="Information Technology">Information Technology Department</option>
 						<option id="Civil" value="Civil">Civil Department</option>
 					</select> 
 				</div>
