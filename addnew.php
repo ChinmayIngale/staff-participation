@@ -79,6 +79,7 @@ session_start();
 <body>
 <header style="background-color: turquoise;">
 		<nav id="header">
+		<div id="name">
             <div class="header_logo">
               <a href="https://www.vcet.edu.in/">
                 <div id="logo-img"></div>
@@ -88,6 +89,7 @@ session_start();
                 <a href="https://www.vcet.edu.in/"><h1>Vidyavardhini's College Of Engineering & Technology</h1></a>
                 <p>विद्यावर्धिनीचे अभियांत्रिकी आणि तंत्रज्ञान महाविद्यालय, वसई</p>
               </div>
+		</div>
 		</nav>
 	</header>
 	<div id="main">
@@ -126,13 +128,25 @@ session_start();
 							</div>
 							<div id="select_tol">
 								<div>
-								<label for="tol">Title of linkage:<sup class="red">*</sup></label><br>
-								<input type="text" id="tol" name="tol" placeholder="Title of linkage" value="<?php echo ($tol !== '')? $tol : ''; ?>" required >
+								<label for="tol">Title:<sup class="red">*</sup></label><br>
+								<input type="text" id="tol" name="tol" placeholder="Title" value="<?php echo ($tol !== '')? $tol : ''; ?>" required >
 								</div>
 								<div>
-								<label for="pi">Participating Institute:<sup class="red">*</sup></label><br>
-								<input type="text" id="pi" name="pi" placeholder="Participating institute" value="<?php echo ($pi !== '')? $pi : ''; ?>" required >
+								<label for="pi">Organizing Agency:<sup class="red">*</sup></label><br>
+								<input type="text" id="pi" name="pi" placeholder="Organizing Agency" value="<?php echo ($pi !== '')? $pi : ''; ?>" required >
 								</div>
+							</div>
+							<div id="select_nol">
+								<div>
+								<label for="nol">Name of Program:<sup class="red">*</sup></label><br>
+								<input type="text" id="nol" name="nol" placeholder="Name of Program" value="<?php echo ($nol !== '')? $nol : ''; ?>" required>
+								<input type="hidden" name="tsr" value="<?php echo $tsr?>">	
+								</div>
+								<div>
+								<label for="year">Year:<sup class="red">*</sup></label><br>
+								<select id="year" name="year" required ></select>
+								</div>
+								
 							</div>
 							<div id="select_duration">
 								<div>
@@ -144,17 +158,7 @@ session_start();
 								<input type="date" id="ed" name="ed" value="<?php echo ($ed !== '')? $ed : ''; ?>" required>
 								</div>
 							</div>
-							<div id="select_nol">
-								<div>
-								<label for="year">Year:<sup class="red">*</sup></label><br>
-								<select id="year" name="year" required ></select>
-								</div>
-								<div>
-								<label for="nol">Nature of linkage:<sup class="red">*</sup></label><br>
-								<input type="text" id="nol" name="nol" placeholder="Nature of linkage" value="<?php echo ($nol !== '')? $nol : ''; ?>" required>
-								<input type="hidden" name="tsr" value="<?php echo $tsr?>">	
-							</div>
-							</div>
+							
 					</fieldset>
 					<div id="submit">
 					<input type="submit" id="upload" name="upload1" value="Upload" form="existf">

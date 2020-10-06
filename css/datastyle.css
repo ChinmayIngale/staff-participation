@@ -284,16 +284,16 @@ legend{
 	border-radius: 5px;
 
 }
-#del{
+.del{
 	background-color: #d9534f;
 }
-#del:hover{
+.del:hover{
 	background-color: #c9302c;
 }
-#update{
+.update{
 	background-color: #5cb85c;
 }
-#update:hover{
+.update:hover{
 	background-color: #449d44;
 }
 #newprg{

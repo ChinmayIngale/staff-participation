@@ -75,7 +75,7 @@
 			  </div>
 			</div>
 			<div class="right_btn">
-				<a href="main_page.php"><button id="main_page">View Page</button></a>
+				<button id="main_page">View Page</button>
 			</div>
 		</nav>
 	</header>
@@ -110,14 +110,15 @@
 						<select id="select_staff" name="sstaff" required >
 						<option value=''>--Select Staff--</option>
 						</select>
-						<input type="hidden" id="tsr" name="tsr" required>
+						<input type="hidden" id="tsr" name="tsr">
 					</div>
 					</div>
+					</form> 
 					<div id="information">
 					
 					</div>
 					<div id="try"></div>
-			</form> 
+			
 		</div>
 		<div id="new" class="form">
 		<form id="newf" method="post" enctype="multipart/form-data">

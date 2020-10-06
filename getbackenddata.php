@@ -61,11 +61,11 @@ if(isset($_POST["ssn"])){
                         <tr class="data_tr">
                             <th class="data_th" rowspan="2">SR. No</th>
                             <th class="data_th" rowspan="2">Type</th>
-                            <th class="data_th" rowspan="2">Title of the linkage</th>
-                            <th class="data_th" rowspan="2">name of participation institution</th>
-                            <th class="data_th" rowspan="2">Year of commenceme</th>
+                            <th class="data_th" rowspan="2">Title</th>
+                            <th class="data_th" rowspan="2">Organizing Agency</th>
+                            <th class="data_th" rowspan="2">Year</th>
                             <th class="data_th" colspan="2">Duration</th>
-                            <th class="data_th" rowspan="2">Nature of linkage</th>
+                            <th class="data_th" rowspan="2">Name of Program</th>
                             <th class="data_th" rowspan="2">Operation</th>
                         </tr>
                         <tr class="data_tr">
@@ -88,29 +88,28 @@ if(isset($_POST["ssn"])){
                 $ed = $row['ed'];
                 $nol = $row['nature_of_linkage'];
 
-                echo '<tr class="data_tr">';
-                echo '<td class="data_td">'.$sr.'</td>';
-                echo '<td class="data_td">'.$type.'</td>';
-                echo '<td class="data_td">'.$tol.'</td>';
-                echo '<td class="data_td">'.$pi.'</td>';
-                echo '<td class="data_td">'.$year.'</td>';    
-                echo '<td class="data_td">'.$sd.'</td>';
-                echo '<td class="data_td">'.$ed.'</td>';
-                echo '<td class="data_td">'.$nol.'</td>';
-                echo '<td class="data_td">
-                        <form id="deletef">
-                        <button class="operation" id="del" form="deletef" onClick="deleteInfo('.'`'.$dept.'`'.','.$tsr.')"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                echo '<tr class="data_tr">
+                        <td class="data_td">'.$sr.'</td>
+                        <td class="data_td">'.$type.'</td>
+                        <td class="data_td">'.$tol.'</td>
+                        <td class="data_td">'.$pi.'</td>
+                        <td class="data_td">'.$year.'</td>
+                        <td class="data_td">'.$sd.'</td>
+                        <td class="data_td">'.$ed.'</td>
+                        <td class="data_td">'.$nol.'</td>
+                        <td class="data_td">
+                        <form class="deletef">
+                            <button class="operation del" form="deletef" onClick="deleteInfo('.'`'.$dept.'`'.','.$tsr.')"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                         </form>
-                        <button name="update" class="operation" id="update" onClick="modifyInfo('.'`'.$dept.'`'.','.$tsr.')"><i class="fa fa-pencil" aria-hidden="true"></i> Modify</button>
-                    </td>';
-                echo '</tr>';
+                        <button name="update" form="existf" class="operation update" onClick="modifyInfo('.'`'.$dept.'`'.','.$tsr.')"><i class="fa fa-pencil" aria-hidden="true"></i> Modify</button>
+                        </td>
+                        </tr>';
                 $sr++; 
             }
-            echo '</tbody>
-            </table>';
+            echo '</tbody></table>';
             echo '</div>';
             echo '<div id="submit">';
-            echo '<button id="newprg" name="newprg" type="submit"><i class="fa fa-plus" aria-hidden="true"></i> Add new program</button>';
+            echo '<button id="newprg" name="newprg" form="existf" type="submit"><i class="fa fa-plus" aria-hidden="true"></i> Add new program</button>';
             echo '</div>';
             
         }

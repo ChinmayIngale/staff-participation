@@ -21,6 +21,10 @@ scrollWin = function(x, y) {
     
 }
 
+//redirect
+document.querySelector("#main_page").addEventListener('click', function(){
+    location.href="main_page.php";
+});
 
 //validation
 //form 2

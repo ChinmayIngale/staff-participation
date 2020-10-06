@@ -85,11 +85,11 @@
   <thead>
     <tr class="data_tr">
         <th class="data_th" rowspan="2">SR. No</th>
-        <th class="data_th" rowspan="2">Title of the linkage</th>
-        <th class="data_th" rowspan="2">name of participation institution</th>
-        <th class="data_th" rowspan="2">Year of commenceme</th>
+        <th class="data_th" rowspan="2">Title</th>
+        <th class="data_th" rowspan="2">Name of Participation Institution</th>
+        <th class="data_th" rowspan="2">Year</th>
         <th class="data_th" colspan="2">Duration</th>
-        <th class="data_th" rowspan="2">Nature of linkage</th>
+        <th class="data_th" rowspan="2">Name of Program</th>
     </tr>
     <tr class="data_tr">
       <th class="data_th">start date</th>
@@ -131,11 +131,11 @@
   <thead>
     <tr class="data_tr">
         <th class="data_th" rowspan="2">SR. No</th>
-        <th class="data_th" rowspan="2">Title of the linkage</th>
-        <th class="data_th" rowspan="2">name of participation institution</th>
-        <th class="data_th" rowspan="2">Year of commenceme</th>
+        <th class="data_th" rowspan="2">Title</th>
+        <th class="data_th" rowspan="2">Name of Participation Institution</th>
+        <th class="data_th" rowspan="2">Year</th>
         <th class="data_th" colspan="2">Duration</th>
-        <th class="data_th" rowspan="2">Nature of linkage</th>
+        <th class="data_th" rowspan="2">Name of Program</th>
     </tr>
     <tr class="data_tr">
       <th class="data_th">start date</th>
@@ -177,11 +177,11 @@
   <thead>
     <tr class="data_tr">
         <th class="data_th" rowspan="2">SR. No</th>
-        <th class="data_th" rowspan="2">Title of the linkage</th>
-        <th class="data_th" rowspan="2">name of participation institution</th>
-        <th class="data_th" rowspan="2">Year of commenceme</th>
+        <th class="data_th" rowspan="2">Title</th>
+        <th class="data_th" rowspan="2">Organizing Agency</th>
+        <th class="data_th" rowspan="2">Year</th>
         <th class="data_th" colspan="2">Duration</th>
-        <th class="data_th" rowspan="2">Nature of linkage</th>
+        <th class="data_th" rowspan="2">Name of Program</th>
     </tr>
     <tr class="data_tr">
       <th class="data_th">start date</th>
