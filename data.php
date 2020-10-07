@@ -5,10 +5,12 @@
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  margin-top: -40px;
   display: none;
 }
 .info.show{
   display: table;
+  margin-top: 0;
 }
 .info .data_td, .info .data_th {
   border: 1px solid #ddd;
@@ -39,8 +41,9 @@
   font-weight: normal;
 }
 </style>
-
+<div style="padding: 20px;">
 <table id="about" class="info show">
+
   <?php
   $sql2 = "SELECT *,DATE_FORMAT(date_of_birth,'%d/%m/%Y') AS dob, DATE_FORMAT(date_of_joining_institute,'%d/%m/%Y') AS doji FROM `staff` WHERE ssn=$ssn;";
   $table = mysqli_query($conn, $sql2);
@@ -81,12 +84,14 @@
 ?>
 </table>
 
+</div>
+
 <table id="fdp" class="info">
   <thead>
     <tr class="data_tr">
         <th class="data_th" rowspan="2">SR. No</th>
         <th class="data_th" rowspan="2">Title</th>
-        <th class="data_th" rowspan="2">Name of Participation Institution</th>
+        <th class="data_th" rowspan="2">Organizing Agency</th>
         <th class="data_th" rowspan="2">Year</th>
         <th class="data_th" colspan="2">Duration</th>
         <th class="data_th" rowspan="2">Name of Program</th>
@@ -132,7 +137,7 @@
     <tr class="data_tr">
         <th class="data_th" rowspan="2">SR. No</th>
         <th class="data_th" rowspan="2">Title</th>
-        <th class="data_th" rowspan="2">Name of Participation Institution</th>
+        <th class="data_th" rowspan="2">Organizing Agency</th>
         <th class="data_th" rowspan="2">Year</th>
         <th class="data_th" colspan="2">Duration</th>
         <th class="data_th" rowspan="2">Name of Program</th>
