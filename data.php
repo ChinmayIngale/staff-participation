@@ -5,12 +5,12 @@
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
-  margin-top: -40px;
+  margin-top: 0px;
   display: none;
 }
 .info.show{
   display: table;
-  margin-top: 0;
+  margin-top: -40px;
 }
 .info .data_td, .info .data_th {
   border: 1px solid #ddd;

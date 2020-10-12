@@ -32,6 +32,7 @@
 		}else{
 			$awards = "'".$_POST['awards']."'";
 		}
+		
 		$conn = mysqli_connect("localhost","root","","staff_info");
 		if (mysqli_connect_error()){
 			echo "can't connect to database";
