@@ -32,7 +32,7 @@
 		}else{
 			$awards = "'".$_POST['awards']."'";
 		}
-		
+
 		$conn = mysqli_connect("localhost","root","","staff_info");
 		if (mysqli_connect_error()){
 			echo "can't connect to database";
@@ -85,8 +85,8 @@
 		<div id="select_buttons">
 		<!--<div onclick="location.href='#exist';" class="add_button active"><span class="text">Add program in existing staff </span></div>
 		<div onclick="location.href='#new';" class="add_button"><span class="text">Add program of new staff</span></div>-->
-		<div onclick="scrollWin(-20000, 0)" class="add_button active"><span class="text">Add program in Existing Staff </span></div>
-		<div onclick="scrollWin(20000, 0)" class="add_button"><span class="text">Add New Staff</span></div>
+		<div data-form="#exist" class="add_button active"><span class="text">Add program in Existing Staff </span></div>
+		<div data-form="#new" class="add_button"><span class="text">Add New Staff</span></div>
 		</div>
 	</div>
 	<div id="data_in">

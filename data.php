@@ -29,7 +29,7 @@
   color: white;
 }
 .about_tr{
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #929292;
 }
 .about_th, .about_td{
   padding: 12px;
@@ -42,7 +42,7 @@
 }
 </style>
 <div style="padding: 20px;">
-<table id="about" class="info show">
+<table id="about" class="info show" style="margin-top: 0;">
 
   <?php
   $sql2 = "SELECT *,DATE_FORMAT(date_of_birth,'%d/%m/%Y') AS dob, DATE_FORMAT(date_of_joining_institute,'%d/%m/%Y') AS doji FROM `staff` WHERE ssn=$ssn;";

@@ -10,16 +10,15 @@ tabs.forEach(tab=> {
     var current = document.getElementsByClassName("active");
     current[0].className = current[0].className.replace(" active", "");
     this.className += " active";
+    var target = tab.dataset.form;
+    console.log(target);
+    //document.querySelector(target).style.display = "none";
+    $('.form:not('+target+')').hide();
+    
+    $(target).fadeIn(600);
     });
 });
 
-//scroll
-
-
-scrollWin = function(x, y) {
-    document.getElementById("data_in").scrollBy(x, y);
-    
-}
 
 //redirect
 document.querySelector("#main_page").addEventListener('click', function(){
