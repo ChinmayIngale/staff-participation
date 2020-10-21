@@ -7,3 +7,7 @@ for (var i = 0; i < btns.length; i++) {
   this.id = "activedept";
   });
 }
+
+document.querySelector("#login_page").addEventListener('click', function(){
+  location.href="login_page.php";
+});

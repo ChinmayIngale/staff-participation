@@ -22,8 +22,10 @@ tabs.forEach(tab=> {
 
 //redirect
 document.querySelector("#main_page").addEventListener('click', function(){
-    location.href="main_page.php";
+    location.href="logout.php";
 });
+
+
 
 //validation
 //form 2
@@ -141,18 +143,22 @@ function checkvalid(){
         for(var i = 0; i < dos.length; i++){
             dos[i].selected = false;
         };
+        console.log("ssn is:"+ssn);
         if(!ssn == ""){
-        document.getElementById(deptname).selected = true;
+            document.getElementById(deptname).selected = true;
+        
+            $.ajax({
+                url:"getbackenddata.php",
+                method:"post",
+                data:"ssn=" + ssn
+            }).done(function(sname){
+                document.querySelector("#information").innerHTML= sname;
+            });
+        }else{
+            document.querySelector("#information").innerHTML= '';
         }
-        $.ajax({
-            url:"getbackenddata.php",
-            method:"post",
-            data:"ssn=" + ssn
-        }).done(function(sname){
-            document.querySelector("#information").innerHTML= sname;
-        })
-
     }
+    
     var staff = document.querySelector("#select_staff");
     staff.addEventListener("change", getInfo);
 

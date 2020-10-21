@@ -1,4 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+    document.querySelector("#cancel").addEventListener('click', function(){
+        location.href="add_program.php";
+    });
+
     var date = new Date();
     var start = date.getFullYear();
     var dd = date.getDate();

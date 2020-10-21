@@ -4,38 +4,54 @@
  }
  /*header*/
  #header{
-  display: flex;
-
- }
- #logo-img {
-  background: url('../images/clg_logo.png');
-  background-repeat: no-repeat;
-  background-size: 100px 100px;
-  width: 100px;
-  height: 100px;
-  margin: 10px 15px 10px 15px;
-}
-.header_name {
-  padding-top: 20px;
-  
-}
-.header_name h1 {
-  color: black;
-  font-size: 2em;
-  font-weight: bold;
-  margin-top: 0;
-  margin-bottom: 0;
-  
-}
-.header_name p {
-  color: black;
-  font-size: 1.2em;
-  margin-top: 0;
-  padding-top: 10px;
-}
-.header_name a, .header_name a:focus {
-  text-decoration: none;
-}
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	}
+	#name{
+		display: flex;
+	}
+   #logo-img {
+	background: url('../images/clg_logo.png');
+	background-repeat: no-repeat;
+	background-size: 100px 100px;
+	width: 100px;
+	height: 100px;
+	margin: 10px 15px 10px 15px;
+  }
+  .header_name {
+	padding-top: 20px;
+	
+  }
+  .header_name h1 {
+	color: black;
+	font-size: 2em;
+	font-weight: bold;
+	margin-top: 0;
+	margin-bottom: 0;
+	
+  }
+  .header_name p {
+	color: black;
+	font-size: 1.2em;
+	margin-top: 0;
+	padding-top: 10px;
+  }
+  .header_name a, .header_name a:focus {
+	text-decoration: none;
+  }
+  .right_btn{
+	  float: right !important;
+  }
+  #login_page{
+    margin: 30px;
+      padding: 15px 20px;
+      font-size: 1.2em;
+      border-radius: 5px;
+  }
+  #login_page:hover{
+    background-color: #ddd;
+  }
 
 
 
@@ -56,7 +72,7 @@ body{
     padding: 0;
 }
 .img{
-   background-image: url("../images/clg_pic.jpg.jpg");
+   background-image: url("../images/clg_pic.jpg");
     background-position: center center;
     background-size: cover;
     height: 300px;

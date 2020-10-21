@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if ( ! isset($_SESSION['uname']) ) {
+	die('ACCESS DENIED');
+}
+
 	$status1="";
 	if(isset($_POST['upload1'])){
 		$department = $_SESSION['dept'];
@@ -161,7 +166,8 @@ session_start();
 							
 					</fieldset>
 					<div id="submit">
-					<input type="submit" id="upload" name="upload1" value="Upload" form="existf">
+					<input type="submit" class="upload" name="upload1" value="Upload" form="existf">
+					<input type="button" value="cancel" class="upload" id="cancel">
 					<p id="status">
 						<?php
 							if($status1 == "success"){

@@ -28,18 +28,22 @@ else{
 </head>
 <body>
     <header>
-        <nav id="header">
+    <nav id="header">
+			<div id="name">
             <div class="header_logo">
-              <a href="https://www.vcet.edu.in/" class="pull-left">
+              <a href="https://www.vcet.edu.in/">
                 <div id="logo-img"></div>
               </a>
             </div>
               <div class="header_name">
                 <a href="https://www.vcet.edu.in/"><h1>Vidyavardhini's College Of Engineering & Technology</h1></a>
                 <p>विद्यावर्धिनीचे अभियांत्रिकी आणि तंत्रज्ञान महाविद्यालय, वसई</p>
-              </div>
-        </nav>
-    
+			  </div>
+			</div>
+			<div class="right_btn">
+				<button id="login_page">Log in</button>
+			</div>
+		</nav>
       </header>
     <div class="img">
         <div class="overlay">

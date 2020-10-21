@@ -22,4 +22,8 @@ function change(type){
     boxContent.className = boxContent.className.replace(" show", "");
   })
   boxtarget.className += " show";
-}
+} 
+
+document.querySelector("#login_page").addEventListener('click', function(){
+  location.href="login_page.php";
+});

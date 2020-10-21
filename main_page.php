@@ -8,7 +8,8 @@
 </head>
 <body>
     <header>
-        <nav id="header">
+    <nav id="header">
+			<div id="name">
             <div class="header_logo">
               <a href="https://www.vcet.edu.in/">
                 <div id="logo-img"></div>
@@ -17,10 +18,13 @@
               <div class="header_name">
                 <a href="https://www.vcet.edu.in/"><h1>Vidyavardhini's College Of Engineering & Technology</h1></a>
                 <p>विद्यावर्धिनीचे अभियांत्रिकी आणि तंत्रज्ञान महाविद्यालय, वसई</p>
-              </div>
-        </nav>
-    
-      </header>
+			  </div>
+			</div>
+			<div class="right_btn">
+				<button id="login_page" >Login</button>
+			</div>
+		</nav>
+    </header>
     <div class="img" style="height: 400px;">
         <div class="overlay">
             <div class="heading">
@@ -70,4 +74,9 @@
         </div>
     </div>
 </body>
+<script>
+    document.querySelector("#login_page").addEventListener('click', function(){
+  location.href="login_page.php";
+});
+</script>
 </html>

@@ -132,6 +132,7 @@
 ?>
 </tbody>
 </table>
+
 <table id="sttp" class="info">
   <thead>
     <tr class="data_tr">
@@ -178,6 +179,7 @@
 ?>
 </tbody>
 </table>
+
 <table id="workshop" class="info">
   <thead>
     <tr class="data_tr">

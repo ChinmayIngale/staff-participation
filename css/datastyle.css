@@ -210,7 +210,7 @@ legend{
 	color: red;
 	font-size: 16px;
 }
-#upload{
+.upload{
 	height: 40px;
 	width: 150px;
 	color: #fff;
@@ -219,8 +219,9 @@ legend{
 	font-size: 1.1em;
 	font-weight: 500;
 	cursor: pointer;
+	outline: none;
 }
-#upload:hover{
+.upload:hover{
 	background-color: #0dc5b2;
 }
 

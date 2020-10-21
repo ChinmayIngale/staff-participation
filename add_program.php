@@ -1,5 +1,10 @@
 <?php
 	session_start();
+
+	if ( ! isset($_SESSION['uname']) ) {
+        die('ACCESS DENIED');
+    }
+
 	$status2="";
 	if(isset($_POST['upload2'])){
 		$sname = $_POST['sname'];
@@ -76,7 +81,7 @@
 			  </div>
 			</div>
 			<div class="right_btn">
-				<button id="main_page">View Page</button>
+				<button id="main_page">Log out</button>
 			</div>
 		</nav>
 	</header>
