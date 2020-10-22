@@ -16,7 +16,7 @@ if(isset($_POST["dname"])){
         $result = mysqli_query($conn, $names_query);
         echo "<option value=''>--Select Staff--</option>";
         while($row = $result->fetch_array()){
-            echo "<option title= '".$row['dept']."' value='".$row['ssn']."'>".$row['S_name']."</option>";
+            echo "<option class= '".$row['dept']."' value='".$row['ssn']."'>".$row['S_name']."</option>";
         }
         
     }

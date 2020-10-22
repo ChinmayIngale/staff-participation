@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 	if ( ! isset($_SESSION['uname']) ) {
         die('ACCESS DENIED');
@@ -62,7 +63,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/datastyle.css">
 <script src="js/jquery-3.5.1.min.js"></script>
-<script src="js/datalogic.js"></script>
 </head>
 
 
@@ -103,18 +103,36 @@
 						<label for="select_dept">Select Department:<sup class="red">*</sup></label><br>
 						<select id="select_dept" name="sdept" required >
 							<option value="">--Select Department--</option>
-							<option class="do" id="Mechanical" value="mechanical">Mechanical Department</option>
-							<option class="do" id="Electronics And Telecommunications" value="Electronics And Telecommunications">Electronics And Telecommunications Department</option>
-							<option class="do" id="Instrumentation" value="Instrumentation">Instrumentation Department</option>
-							<option class="do" id="Computer" value="Computer">Computer Department</option>
-							<option class="do" id="Information Technology" value="Information Technology">Information Technology Department</option>
-							<option class="do" id="Civil" value="Civil">Civil Department</option>
+							<option class="do" id="Mechanical" value="Mechanical" <?=$_SESSION['dept'] == "Mechanical" ? ' selected="selected"' : ''?>>Mechanical Department</option>
+							<option class="do" id="Electronics And Telecommunications" value="Electronics And Telecommunications" <?=$_SESSION['dept'] == "Electronics And Telecommunications" ? ' selected="selected"' : ''?>>Electronics And Telecommunications Department</option>
+							<option class="do" id="Instrumentation" value="Instrumentation" <?=$_SESSION['dept'] == "Instrumentation" ? ' selected="selected"' : ''?>>Instrumentation Department</option>
+							<option class="do" id="Computer" value="Computer" <?=$_SESSION['dept'] == "Computer" ? ' selected="selected"' : ''?>>Computer Department</option>
+							<option class="do" id="Information Technology" value="Information Technology" <?=$_SESSION['dept'] == "Information Technology" ? ' selected="selected"' : ''?>>Information Technology Department</option>
+							<option class="do" id="Civil" value="Civil" <?=$_SESSION['dept'] == "Civil" ? ' selected="selected"' : ''?>>Civil Department</option>
 						</select> 
 					</div>
 					<div>
 						<label for="select_staff">Select Staff:<sup class="red">*</sup></label><br>
 						<select id="select_staff" name="sstaff" required >
-						<option value=''>--Select Staff--</option>
+						<?php
+							$conn = mysqli_connect("localhost","root","","staff_info");
+							if (mysqli_connect_error()){
+								echo "can't connect to database";
+							}
+							else{
+								$names_query = "SELECT * FROM `staff` ORDER BY `S_post` DESC";
+								
+								$result = mysqli_query($conn, $names_query);
+								echo "<option value=''>--Select Staff--</option>";
+								while($row = $result->fetch_array()){
+									echo "<option class= '".$row['dept']."' value='".$row['ssn']."'";
+									echo ($_SESSION['ssn'] == $row['ssn']) ? "selected='selected'" : "";
+									echo ">".$row['S_name']."</option>";
+								}
+								
+							}
+						
+						?>
 						</select>
 						<input type="hidden" id="tsr" name="tsr">
 					</div>
@@ -206,6 +224,7 @@
 	</div>
 </body>
 
+<script src="js/datalogic.js"></script>
 <script>
     if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );

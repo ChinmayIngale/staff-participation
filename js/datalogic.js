@@ -103,14 +103,32 @@ function checkvalid(){
 
 
 
-    var dname = "all";
     var dept = document.querySelector("#select_dept");
+    dname = dept.value;
+    if(dname ==""){
+        dname = "all";
+    }
+    displaystaffcontent(dname);
+    
     dept.addEventListener("change", function(){
         dname = dept.value;
+        displaystaffcontent(dname);
         loadstaffcontent(dname);
         
     });
-    loadstaffcontent(dname)
+    function displaystaffcontent(dname){
+        var cnodes = document.querySelector("#select_staff").children;
+        for(var i = 1; i < Object.keys(cnodes).length; i++){
+            cnodes[i].style.display = 'none';
+        }
+        
+        var options = document.getElementsByClassName(dname);
+        for(var i = 0; i < Object.keys(options).length; i++){
+            options[i].style.display = 'block';
+        }
+        
+    }
+    //loadstaffcontent(dname);
     function loadstaffcontent(dname){
         if(dname ==""){
             dname = "all";
@@ -138,7 +156,8 @@ function checkvalid(){
     function getInfo(){
         var ssn = staff.value;
         var e = FindByAttributeValue("value", ssn, "option");
-        var deptname = e.getAttribute("title");
+        var deptname = e.className;
+        console.log(deptname);
         const dos = document.getElementsByClassName("do");
         for(var i = 0; i < dos.length; i++){
             dos[i].selected = false;
@@ -161,7 +180,8 @@ function checkvalid(){
     
     var staff = document.querySelector("#select_staff");
     staff.addEventListener("change", getInfo);
-
+    
+	getInfo();
     deleteInfo = function(dept,sr){
         console.log(dept);
         $.ajax({
