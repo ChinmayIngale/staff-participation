@@ -24,10 +24,11 @@ if ( ! isset($_SESSION['uname']) ) {
 		else{
 			if($tsr !== ""){
 				$submit_query = "UPDATE `$department` SET `TYPE`='$type',`title_of_linkage`='$tol',`participating_institute`='$pi',`year`=$year,`start_date`='$sd',`end_date`='$ed',`nature_of_linkage`='$nol' WHERE `sr.`=$tsr";
-
+				$update=true;
 			}
 			else{
 				$submit_query = "INSERT INTO `$department`(`ssn`, `TYPE`, `title_of_linkage`, `participating_institute`, `year`, `start_date`, `end_date`, `nature_of_linkage`) VALUES ('$ssn','$type','$tol','$pi','$year','$sd','$ed','$nol');";
+				$update=false;
 			}
 			if(mysqli_query($conn, $submit_query)){
 				$status1 = "success";
@@ -171,9 +172,15 @@ if ( ! isset($_SESSION['uname']) ) {
 					<p id="status">
 						<?php
 							if($status1 == "success"){
-								echo '<script>
-								alert("New record created successfully");
-								location.href="add_program.php";
+								echo '<script>';
+								if($update){
+								echo 'alert("record updated successfully");';
+
+								}
+								else{
+									echo 'alert("New record created successfully");';
+								}
+								echo 'location.href="add_program.php";
 								</script>';
 							} else if($status1 == "fail") {
 								echo '<script>
