@@ -1,9 +1,11 @@
 <?php
-session_start();
+	session_start();
+	require_once('pdo.php');
+	error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
-if ( ! isset($_SESSION['uname']) ) {
-	die('ACCESS DENIED');
-}
+	if ( ! isset($_SESSION['uname']) ) {
+		die('ACCESS DENIED');
+	}
 
 	$status1="";
 	if(isset($_POST['upload1'])){
@@ -17,57 +19,64 @@ if ( ! isset($_SESSION['uname']) ) {
 		$ed = $_POST['ed'];
 		$nol = $_POST['nol'];
 		$tsr = $_POST['tsr'];
-		$conn = mysqli_connect("localhost","root","","staff_info");
-		if (mysqli_connect_error()){
-			echo "can't connect to database";
+		if($tsr !== ""){
+			$submit_query = "UPDATE `$department` SET `TYPE`= :type, `title_of_linkage`= :tol, `participating_institute`= :pi, `year`= :year, `start_date`= :sd, `end_date`= :ed, `nature_of_linkage`= :nol WHERE `sr.`= :tsr";
+			$stmt = $pdo->prepare($submit_query);
+			$status = $stmt->execute(array(
+					':type' => $type,
+					':tol' => $tol,
+					':pi' => $pi,
+					':year' => $year,
+					':sd' => $sd,
+					':ed' => $ed,
+					':nol' => $nol,
+					':tsr' => $tsr)
+				);
+			
+			$update=true;
 		}
 		else{
-			if($tsr !== ""){
-				$submit_query = "UPDATE `$department` SET `TYPE`='$type',`title_of_linkage`='$tol',`participating_institute`='$pi',`year`=$year,`start_date`='$sd',`end_date`='$ed',`nature_of_linkage`='$nol' WHERE `sr.`=$tsr";
-				$update=true;
-			}
-			else{
-				$submit_query = "INSERT INTO `$department`(`ssn`, `TYPE`, `title_of_linkage`, `participating_institute`, `year`, `start_date`, `end_date`, `nature_of_linkage`) VALUES ('$ssn','$type','$tol','$pi','$year','$sd','$ed','$nol');";
-				$update=false;
-			}
-			if(mysqli_query($conn, $submit_query)){
-				$status1 = "success";
-			} else {
-				$status1 = "fail";
-			}
+			$submit_query = "INSERT INTO `$department`(`ssn`, `TYPE`, `title_of_linkage`, `participating_institute`, `year`, `start_date`, `end_date`, `nature_of_linkage`) VALUES ( :ssn, :type, :tol, :pi, :year, :sd, :ed, :nol);";
+			$stmt = $pdo->prepare($submit_query);
+			$status = $stmt->execute(array(
+					':ssn' => $ssn,
+					':type' => $type,
+					':tol' => $tol,
+					':pi' => $pi,
+					':year' => $year,
+					':sd' => $sd,
+					':ed' => $ed,
+					':nol' => $nol)
+				);
+			$update=false;
 		}
+		if($status){
+			$status1 = "success";
+		} else {
+			$status1 = "fail";
+		}
+		
 	}
-	$type="";
-	$tol="";
-	$pi="";
-	$year="";
-	$sd="";
-	$ed="";
-	$nol="";
-	$tsr="";
-	if(isset($_POST['update'])){
-		$dept = $_POST['sdept'];
-		$tsr = $_POST['tsr'];
-		$table_query = "SELECT * FROM `$dept` WHERE `sr.`=$tsr;";
-		$conn = mysqli_connect("localhost","root","","staff_info");
-		if (mysqli_connect_error()){
-			echo "can't connect to database";
-		}
-		else{
-			$table = mysqli_query($conn, $table_query);
-			while($row = $table->fetch_array()){
-				$type = $row['TYPE'];
-				$tol = $row['title_of_linkage'];
-				$pi = $row['participating_institute'];
-				$year = $row['year'];
-				$sd = $row['start_date'];
-				$ed = $row['end_date'];
-				$nol = $row['nature_of_linkage'];
-			}
-		}
-	}
-
 	
+	if(isset($_POST['update'])){
+		$dept = $_POST['dept'];
+		$tsr = $_POST['tsr'];
+		$table_query = "SELECT * FROM `$dept` WHERE `sr.`= :row";
+		$stmt = $pdo->prepare($table_query);
+		$status = $stmt->execute(array(
+				':row' => $tsr)
+			);
+		$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+		$type = $row['TYPE'];
+		$tol = $row['title_of_linkage'];
+		$pi = $row['participating_institute'];
+		$year = $row['year'];
+		$sd = $row['start_date'];
+		$ed = $row['end_date'];
+		$nol = $row['nature_of_linkage'];
+		
+	}
 
 ?>
 <!doctype html>
@@ -107,12 +116,12 @@ if ( ! isset($_SESSION['uname']) ) {
 						<div class="container">
 						<div>
 							<label for="select_dept">Select Department:<sup class="red">*</sup></label><br>
-							<input type="text" id="select_dept" name="sdept" value="<?php echo $_SESSION['dept']?> Department" disabled>
+							<input type="text" id="select_dept" name="sdept" value="<?= htmlentities($_SESSION['dept'])?> Department" disabled>
 
 						</div>
 						<div>
 							<label for="select_staff">Staff:<sup class="red">*</sup></label><br>
-							<input type="text" id="select_staff" name="sstaff" value="<?php echo $_SESSION['name']?>" disabled>
+							<input type="text" id="select_staff" name="sstaff" value="<?= htmlentities($_SESSION['name'])?>" disabled>
 						</div>
 						</div>
 						<div id="information">
@@ -125,28 +134,28 @@ if ( ! isset($_SESSION['uname']) ) {
 						<div class="container">
 							<div id="select_type">
 								<label for="select_type">Program type:<sup class="red">*</sup></label><br>
-								<input class="type" type="radio" id="FDP" style="margin-left: 0;" name="type" value="FDP" <?php echo ($type == 'FDP')? "checked" : ""; ?> required >
+								<input class="type" type="radio" id="FDP" style="margin-left: 0;" name="type" value="FDP" <?= ($type == 'FDP')? "checked" : ""; ?> required >
 								<label class="type" for="FDP">FDP</label>
-								<input class="type" type="radio" id="STTP" name="type" value="STTP" <?php echo ($type == 'STTP')? "checked" : ""; ?> required>
+								<input class="type" type="radio" id="STTP" name="type" value="STTP" <?= ($type == 'STTP')? "checked" : ""; ?> required>
 								<label class="type" for="STTP">STTP</label>
-								<input class="type" type="radio" id="Workshop" name="type" value="Wrokshop" <?php echo ($type == 'Workshop')? "checked" : ""; ?> required >
+								<input class="type" type="radio" id="Workshop" name="type" value="Wrokshop" <?= ($type == 'Workshop')? "checked" : ""; ?> required >
 								<label class="type" for="Workshop">Workshop</label>
 							</div>
 							<div id="select_tol">
 								<div>
 								<label for="tol">Title:<sup class="red">*</sup></label><br>
-								<input type="text" id="tol" name="tol" placeholder="Title" value="<?php echo ($tol !== '')? $tol : ''; ?>" required >
+								<input type="text" id="tol" name="tol" placeholder="Title" value="<?= ($tol !== '')? htmlentities($tol) : ''; ?>" required >
 								</div>
 								<div>
 								<label for="pi">Organizing Agency:<sup class="red">*</sup></label><br>
-								<input type="text" id="pi" name="pi" placeholder="Organizing Agency" value="<?php echo ($pi !== '')? $pi : ''; ?>" required >
+								<input type="text" id="pi" name="pi" placeholder="Organizing Agency" value="<?= ($pi !== '')? htmlentities($pi) : ''; ?>" required >
 								</div>
 							</div>
 							<div id="select_nol">
 								<div>
 								<label for="nol">Name of Program:<sup class="red">*</sup></label><br>
-								<input type="text" id="nol" name="nol" placeholder="Name of Program" value="<?php echo ($nol !== '')? $nol : ''; ?>" required>
-								<input type="hidden" name="tsr" value="<?php echo $tsr?>">	
+								<input type="text" id="nol" name="nol" placeholder="Name of Program" value="<?= ($nol !== '')? htmlentities($nol) : ''; ?>" required>
+									
 								</div>
 								<div>
 								<label for="year">Year:<sup class="red">*</sup></label><br>
@@ -157,14 +166,14 @@ if ( ! isset($_SESSION['uname']) ) {
 							<div id="select_duration">
 								<div>
 								<label for="sd">Start date:<sup class="red">*</sup></label><br>
-								<input type="date" id="sd" name="sd" value="<?php echo ($sd !== '')? $sd : ''; ?>" required>
+								<input type="date" id="sd" name="sd" value="<?= ($sd !== '')? htmlentities($sd) : ''; ?>" required>
 								</div>
 								<div>
 								<label for="ed">End date:<sup class="red">*</sup></label><br>
-								<input type="date" id="ed" name="ed" value="<?php echo ($ed !== '')? $ed : ''; ?>" required>
+								<input type="date" id="ed" name="ed" value="<?= ($ed !== '')? htmlentities($ed) : ''; ?>" required>
 								</div>
 							</div>
-							
+							<input type="hidden" name="tsr" value="<?= $tsr?>">
 					</fieldset>
 					<div id="submit">
 					<input type="submit" class="upload" name="upload1" value="Upload" form="existf">
@@ -180,13 +189,23 @@ if ( ! isset($_SESSION['uname']) ) {
 								else{
 									echo 'alert("New record created successfully");';
 								}
-								echo 'location.href="add_program.php";
-								</script>';
+								if($_SESSION['user'] == 'admin'){
+								echo 'location.href="add_program.php";';
+								}
+								else{
+									echo 'location.href="staffdata.php";';
+								}
+								echo '</script>';
 							} else if($status1 == "fail") {
 								echo '<script>
-								alert("Error while uploading data");
-								location.href="add_program.php";
-								</script>';
+								alert("Error while uploading data");';
+								if($_SESSION['user'] == 'admin'){
+									echo 'location.href="add_program.php";';
+								}
+								else{
+									echo 'location.href="staffdata.php";';
+								}
+								echo '</script>';
 							}
 						?>
 					</p>

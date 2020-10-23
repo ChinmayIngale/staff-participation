@@ -1,20 +1,44 @@
 <?php
   session_start();
+  require_once('pdo.php');
+  
   if ( isset($_POST['uname']) && isset($_POST['pass']) ) {
     $salt = 'XyZzy12*_';
     $stored_hash = '3167f748abd7e549c164479796a1d510';
       
     $check = hash('md5', $salt.$_POST['pass']);
     echo $check;
-      if ( $_POST['uname'] == "admin" && $stored_hash == $check) {
+      if ( $_POST['uname'] === "admin@vcet.edu.in" && $stored_hash == $check) {
           $_SESSION['uname'] = $_POST['uname'];
+          $_SESSION['user'] == 'admin';
           header("Location: add_program.php");
           return;
-      } else {
-          $_SESSION['error'] = "Incorrect Username or Password";
+      }
+      $validation_query = "SELECT * FROM staff where `S_email`= :email";
+      $stmt = $pdo->prepare($validation_query);
+      $status = $stmt->execute(array(
+          ':email' => $_POST['uname'])
+        );
+      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+      if($row == false){
+        $_SESSION['error'] = 'There is no account associated with this email';
+        header("Location: login_page.php");
+        return;
+      }
+      else{
+        if($row['password'] == $check){
+          $_SESSION['uname'] = $row['S_name'];
+          $_SESSION['ssn'] = $row['ssn'];
+          $_SESSION['user'] == 'staff';
+          header("Location: staffdata.php");
+          return;
+        }else{
+          $_SESSION['error'] = "Incorrect Password";
           header("Location: login_page.php");
           return;
+        }
       }
+      
   }
 ?>
 <!DOCTYPE html>
@@ -45,7 +69,7 @@
 </header>
 <div class="form">
       
-    <h2>Admin Login</h2>
+    <h2>Staff Login</h2>
     
     <form id="loginform" method="post">
     <?php
@@ -56,9 +80,9 @@ if ( isset($_SESSION['error']) ) {
 ?>
       <div class="field-wrap">
       <label>
-        Username/E-mail<span class="req">*</span>
+        Username<span class="req">*</span>
       </label>
-      <input type="text" name="uname" id="username" required autocomplete="off"/>
+      <input type="Email" name="uname" id="username" required autocomplete="on"/>
     </div>
     
     <div class="field-wrap">
@@ -69,13 +93,12 @@ if ( isset($_SESSION['error']) ) {
       
     </div>
     
-    <p class="forgot"><a href="#">Forgot Password?</a></p>
     
     <input type="submit" id="loginbtn" class="button " value="Log In"></button>
-    
+    <p class="signup">OR <a href="#">Sign up</a></p>
     </form>
    
-</div> <!-- /form -->
+</div>
 <script src="js/login_page.js"></script>
 </body>
 </html>

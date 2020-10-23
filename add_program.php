@@ -1,13 +1,26 @@
 <?php
 	session_start();
+	require_once('pdo.php');
 	error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
-	if ( ! isset($_SESSION['uname']) ) {
+	if ( ! isset($_SESSION['uname']) && $_SESSION['user'] == 'admin') {
         die('ACCESS DENIED');
     }
-
+	$salt = 'XyZzy12*_';
 	$status2="";
 	if(isset($_POST['upload2'])){
+		$validation_query = "SELECT * FROM staff where `S_email`= :email";
+		$stmt = $pdo->prepare($validation_query);
+		$status = $stmt->execute(array(
+				':email' => $_POST['email'])
+			);
+		$row = $stmt->fetch(PDO::FETCH_ASSOC);
+		if($row != false){
+			$_SESSION['error'] = 'There is already an account associated with this email';
+			header("Location: add_program.php");
+            return;
+		}
+
 		$sname = $_POST['sname'];
 		$designation = $_POST['designation'];
 		$department = $_POST['department'];
@@ -16,42 +29,58 @@
 		$doji = $_POST['doji'];
 		$experiance = $_POST['experiance'];
 		$qualification = $_POST['qualification'];
+		$pass = hash('md5', $salt.$_POST['pass']);
+		
 		if(trim($_POST['papers']) == ""){
-			$papers = 'NULL';
+			$papers = NULL;
 		}else{
-			$papers = "'".$_POST['papers']."'";
+			$papers = $_POST['papers'];
 		}
 		if(trim($_POST['books']) == ""){
-			$books = 'NULL';
+			$books = NULL;
 		}else{
-			$books = "'".$_POST['books']."'";
+			$books = $_POST['books'];
 		}
 		$email = $_POST['email'];
 		$info = $_POST['info'];
 		if(trim($_POST['memberships']) == ""){
-			$memberships = 'NULL';
+			$memberships = NULL;
 		}else{
-			$memberships = "'".$_POST['memberships']."'";
+			$memberships = $_POST['memberships'];
 		}
 		if(trim($_POST['awards']) == ""){
-			$awards = 'NULL';
+			$awards = NULL;
 		}else{
-			$awards = "'".$_POST['awards']."'";
+			$awards = $_POST['awards'];
 		}
 
-		$conn = mysqli_connect("localhost","root","","staff_info");
-		if (mysqli_connect_error()){
-			echo "can't connect to database";
-		}
-		else{
-			$submit_query = "INSERT INTO `staff` (`ssn`, `S_name`, `S_post`, `S_info`, `date_of_birth`, `date_of_joining_institute`, `qualification_with_class/grade`, `total_experience_in_years`, `papers_published`, `books_published`, `professional_memberships`, `awards`, `S_email`, `dept`, `photo`) VALUES ('','$sname','$designation','$info','$dob','$doji','$qualification','$experiance',$papers,$books,$memberships,$awards,'$email','$department','$image');";
-			
-			if(mysqli_query($conn, $submit_query)){
+		
+		$submit_query = "INSERT INTO `staff` (`ssn`, `S_name`, `S_post`, `S_info`, `date_of_birth`, `date_of_joining_institute`, `qualification_with_class/grade`, `total_experience_in_years`, `papers_published`, `books_published`, `professional_memberships`, `awards`, `S_email`, `dept`, `password`, `photo`) VALUES 
+		('', :sname, :designation, :info, :dob, :doji, :qualification, :experiance, :papers, :books, :memberships, :awards, :email, :department, :pass, '$image');";
+		$stmt = $pdo->prepare($submit_query);
+		$stmt->bindValue(':sname',$sname, PDO::PARAM_STR);
+		$stmt->bindValue(':designation',$designation, PDO::PARAM_STR);
+		$stmt->bindValue(':info',$info, PDO::PARAM_STR);
+		$stmt->bindValue(':dob',$dob, PDO::PARAM_STR);
+		$stmt->bindValue(':doji',$doji, PDO::PARAM_STR);
+		$stmt->bindValue(':qualification',$qualification, PDO::PARAM_STR);
+		$stmt->bindValue(':experiance',$experiance, PDO::PARAM_INT);
+		$stmt->bindValue(':papers',$papers, PDO::PARAM_INT);
+		$stmt->bindValue(':books',$books, PDO::PARAM_INT);
+
+		$stmt->bindValue(':memberships',$memberships, PDO::PARAM_STR);
+		$stmt->bindValue(':awards',$awards, PDO::PARAM_STR);
+		$stmt->bindValue(':email',$email, PDO::PARAM_STR);
+		$stmt->bindValue(':department',$department, PDO::PARAM_STR);
+		$stmt->bindValue(':pass',$pass, PDO::PARAM_STR);
+		$status = $stmt->execute();
+
+			if($status){
 				$status2 = "success";
 			} else {
 				$status2 = "fail";
 			}
-		}
+		
 	}
 	
 ?>
@@ -121,13 +150,14 @@
 							}
 							else{
 								$names_query = "SELECT * FROM `staff` ORDER BY `S_post` DESC";
-								
-								$result = mysqli_query($conn, $names_query);
 								echo "<option value=''>--Select Staff--</option>";
-								while($row = $result->fetch_array()){
-									echo "<option class= '".$row['dept']."' value='".$row['ssn']."'";
+								$stmt = $pdo->prepare($names_query);
+								$stmt->execute();
+								$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+								foreach( $rows as $row ) {
+									echo "<option class= '".htmlentities($row['dept'])."' value='".htmlentities($row['ssn'])."'";
 									echo ($_SESSION['ssn'] == $row['ssn']) ? "selected='selected'" : "";
-									echo ">".$row['S_name']."</option>";
+									echo ">".htmlentities($row['S_name'])."</option>";
 								}
 								
 							}
@@ -151,19 +181,11 @@
 					<label for="sname">Staff Name:<sup class="red">*</sup></label><br>
 					<input type="text" id="sname" name="sname" placeholder="Staff Name" required/><br>
 
-					<label for="designation">Staff Designation:<sup class="red">*</sup></label><br>
-					<input type="text" id="designation" name="designation" placeholder="Staff Post" required/><br>
+					<label for="email">Email:<sup class="red">*</sup></label><br>
+					<input type="Email" id="email" name="email" required placeholder="example@vcet.edu.in "><br>
 
-					<label for="department">Department:<sup class="red">*</sup></label><br>
-					<select id="department" name="department" required ><br>
-						<option value="">--Select Department--</option>
-						<option id="Mechanical" value="Mechanical">Mechanical Department</option>
-						<option id="Electronics And Telecommunications" value="Electronics And Telecommunications">Electronics And Telecommunications Department</option>
-						<option id="Instrumentation" value="Instrumentation">Instrumentation Department</option>
-						<option id="Computer" value="Computer">Computer Department</option>
-						<option id="Information Technology" value="Information Technology">Information Technology Department</option>
-						<option id="Civil" value="Civil">Civil Department</option>
-					</select> 
+					<label for="pass">Password:<sup class="red">*</sup></label><br>
+					<input type="password" id="pass" name="pass" required placeholder="Password "><br>
 				</div>
 				<div id="staffpic" style="padding: 0 20px;">
 					<div id="dash">
@@ -173,6 +195,20 @@
 					
 				</div>
 				<div>
+					<label for="department">Department:<sup class="red">*</sup></label><br>
+					<select id="department" name="department" required >
+						<option value="">--Select Department--</option>
+						<option id="Mechanical" value="Mechanical">Mechanical Department</option>
+						<option id="Electronics And Telecommunications" value="Electronics And Telecommunications">Electronics And Telecommunications Department</option>
+						<option id="Instrumentation" value="Instrumentation">Instrumentation Department</option>
+						<option id="Computer" value="Computer">Computer Department</option>
+						<option id="Information Technology" value="Information Technology">Information Technology Department</option>
+						<option id="Civil" value="Civil">Civil Department</option>
+					</select> <br>
+
+					<label for="designation">Staff Designation:<sup class="red">*</sup></label><br>
+					<input type="text" id="designation" name="designation" placeholder="Staff Post" required/><br>
+
 					<label for="dob">Date of Birth:<sup class="red">*</sup></label><br>
 					<input type="date" id="dob" name="dob" required><br>
 
@@ -182,9 +218,6 @@
 					<label for="experiance">Total experiance In Years:<sup class="red">*</sup></label><br>
 					<input type="text" id="experiance" name="experiance" pattern="[0-9]+" placeholder="eg: 7" required><br>
 
-					<label for="qualification">Qualification with class/grade:<sup class="red">*</sup></label><br>
-					<input type="text" id="qualification" name="qualification" placeholder="Staff Qualification" required><br>
-
 					<label for="papers">Total Papers Published:</label><br>
 					<input type="text" id="papers" name="papers" pattern="[0-9]+" placeholder="In numbers(left blank if none)"><br>
 
@@ -192,8 +225,8 @@
 					<input type="text" id="books" name="books" pattern="[0-9]+" placeholder="In numbers(left blank if none)"><br>
 				</div>
 				<div>
-					<label for="email">Email:<sup class="red">*</sup></label><br>
-					<input type="Email" id="email" name="email" required placeholder="example@vcet.edu.in "><br>
+					<label for="qualification">Qualification with class/grade:<sup class="red">*</sup></label><br>
+					<input type="text" id="qualification" name="qualification" placeholder="Staff Qualification" required><br>
 
 					<label for="info">Staff Information:<sup class="red">*</sup></label><br>
 					<textarea id="info" name="info" required placeholder="Some Info about staff"></textarea><br>
@@ -206,7 +239,7 @@
 				</div>
 
 				<div id="submit">
-					<input type="submit" id="upload" name="upload2" value="Upload" form="newf" onclick="checkvalid()">
+					<input type="submit" class="upload" name="upload2" value="Upload" form="newf" onclick="checkvalid()">
 					<p id="status">
 						<?php
 							if($status2 == "success"){
@@ -226,6 +259,12 @@
 
 <script src="js/datalogic.js"></script>
 <script>
+	<?php
+	if(isset($_SESSION['error'])){
+		echo "alert('".$_SESSION['error']."');";
+		unset($_SESSION['error']);
+	}
+	?>
     if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );
     }

@@ -1,42 +1,44 @@
 
 <?php
-if(isset($_GET["search"])){
-    $serach = $_GET['search'];
-    $sql="SELECT * FROM `staff` WHERE S_name LIKE '%$serach%'";
-}
-else{
-    if($dept == "All Staff"){
-        $sql="SELECT * FROM `staff` ORDER BY `S_post` DESC";
+    require_once('pdo.php');
+
+    if(isset($_GET["search"])){
+        $serach = $_GET['search'];
+        $sql="SELECT * FROM `staff` WHERE S_name LIKE '%$serach%'";
     }
     else{
-        $sql ="SELECT * FROM `staff` WHERE dept='$dept'";
+        if($dept == "All Staff"){
+            $sql="SELECT * FROM `staff` ORDER BY `S_post` DESC";
+        }
+        else{
+            $sql ="SELECT * FROM `staff` WHERE dept= :dept";
+
+        }
     }
-}
-//echo $sql;
-$conn = mysqli_connect("localhost","root","","staff_info");
-if (mysqli_connect_error()){
-    echo "can't connect to database";
-}
-else{
-    $result = mysqli_query($conn, $sql);
-    while($row = $result->fetch_array()){
+    //echo $sql;
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(
+        ':dept' => $dept)
+    );
+
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    foreach( $rows as $row ) {
         $ssn = $row['ssn'];
         $sname = $row['S_name'];
         $spost = $row['S_post'];
         $semail = $row['S_email'];
-        echo '<div class="card"><a href="pg2.php?ssn='.$ssn.'" target="_blank">
+        echo '<div class="card"><a href="pg2.php?ssn='.htmlentities($ssn).'" target="_blank">
                 <div class="image">
-                    <img src="showimg.php?ssn='.$ssn.'">
+                    <img src="showimg.php?ssn='.htmlentities($ssn).'">
                 </div>
                 <div class="title">
-                   <h3 class="teacher_name">'.$sname.'</h3>
+                   <h3 class="teacher_name">'.htmlentities($sname).'</h3>
                 </div>
                 <div class="des">
-                    <p >'.strtoupper($spost).' '.$semail.'</p>
+                    <p >'.htmlentities(strtoupper($spost)).'<br>'.htmlentities($semail).'</p>
                 </div>
                 </a></div>';
     }
     
-};
 
 ?>

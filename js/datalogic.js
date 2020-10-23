@@ -112,23 +112,23 @@ function checkvalid(){
     
     dept.addEventListener("change", function(){
         dname = dept.value;
-        displaystaffcontent(dname);
         loadstaffcontent(dname);
         
     });
     function displaystaffcontent(dname){
+        if(dname != 'all'){ 
         var cnodes = document.querySelector("#select_staff").children;
         for(var i = 1; i < Object.keys(cnodes).length; i++){
             cnodes[i].style.display = 'none';
         }
-        
+    }
         var options = document.getElementsByClassName(dname);
         for(var i = 0; i < Object.keys(options).length; i++){
             options[i].style.display = 'block';
         }
         
     }
-    //loadstaffcontent(dname);
+    
     function loadstaffcontent(dname){
         if(dname ==""){
             dname = "all";

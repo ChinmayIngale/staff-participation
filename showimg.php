@@ -1,20 +1,18 @@
 <?php
+    require_once('pdo.php');
 
-$guess=$_GET['ssn']??NULL;
-$sql = "SELECT * FROM staff WHERE ssn=$guess;";
-$conn = mysqli_connect("localhost","root","","staff_info");
-if (mysqli_connect_error()){
-    echo "can't connect to database";
-}
-else{
-    $result = mysqli_query($conn, $sql);
-    while($row = $result->fetch_array()){
-        $imgdata= $row['photo'];
-    }
-    header("content-type: image/PNG");
+    $ssn=$_GET['ssn']??NULL;
+    $sql = "SELECT * FROM staff WHERE ssn= :ssn";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(
+            ':ssn' => $ssn)
+        );
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    foreach( $rows as $row ) {
+            $imgdata= $row['photo'];
+        }
+
+    header("content-type: image/*");
     echo $imgdata;
     
-};
-
-
 ?>

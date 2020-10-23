@@ -1,20 +1,18 @@
 <?php
-$guess=$_GET['ssn']??NULL;
-$sql = "SELECT * FROM staff WHERE ssn=$guess;";
-$conn = mysqli_connect("localhost","root","","staff_info");
-if (mysqli_connect_error()){
-    echo "can't connect to database";
-}
-else{
-    $result = mysqli_query($conn, $sql);
-    while($row = $result->fetch_array()){
-        $ssn = $row['ssn'];
-        $sname = $row['S_name'];
-        $sinfo = $row['S_info'];
-        $dept = $row['dept'];
-    }
+    require_once('pdo.php');
+
+    $ssn=$_GET['ssn']??NULL;
+    $sql = "SELECT * FROM staff WHERE ssn= :ssn";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(
+            ':ssn' => $ssn)
+        );
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
     
-}
+    $ssn = $row['ssn'];
+    $sname = $row['S_name'];
+    $sinfo = $row['S_info'];
+    $dept = $row['dept'];
 
 ?>
 <!DOCTYPE html>
@@ -22,10 +20,10 @@ else{
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $sname; ?></title>
+    <title><?= htmlentities($sname) ?></title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    
 </head>
+
 <body>
     <header>
     <nav id="header">
@@ -48,7 +46,7 @@ else{
     <div class="img">
         <div class="overlay">
             <div class="heading">
-                <div class="res"><h2><?php echo $dept; ?> Department</h2></div>
+                <div class="res"><h2><?= htmlentities($dept) ?> Department</h2></div>
                 <div class="break"></div>
                 <span id="line"></span>
             </div>
@@ -58,13 +56,13 @@ else{
         <div id="info_parent">
             <div id="staffinfo">
                 <div id="staffname">
-                    <h3><?php echo $sname; ?></h3>
+                    <h3><?= htmlentities($sname) ?></h3>
                 </div>
-            <div id="staffdes"><?php echo $sinfo; ?> </div>
+            <div id="staffdes"><?= htmlentities($sinfo) ?> </div>
         </div>
             <div id="staffpic">
                 <div><?php
-                    echo '<img src="showimg.php?ssn='.$ssn.'" width="200" height="200">';
+                    echo '<img src="showimg.php?ssn='.htmlentities($ssn).'" width="200" height="200">';
                     ?>
                 </div>
             </div>

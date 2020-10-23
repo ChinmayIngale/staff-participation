@@ -4,7 +4,12 @@
 	padding: 0;
 	font-family: "Segoe UI", "Open Sans", sans-serif, serif;
 }
-
+body{
+	background-image: url(../images/vcet.jpg);
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 
  /*header*/
  #header{
@@ -156,7 +161,7 @@ legend{
 }
 #select_staff, #select_dept, #tol, #pi, #year, #sd, #ed, #nol, #sname, #designation,
 #department, #email, #dob, #doji, #experiance, #qualification, #papers, #books,
-#info, #memberships, #awards{
+#info, #memberships, #awards, #pass{
 	width: 85%;
 	height: 30px;
 	margin: 10px 0 20px 0;
