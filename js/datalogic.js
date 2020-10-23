@@ -21,7 +21,7 @@ tabs.forEach(tab=> {
 
 
 //redirect
-document.querySelector("#main_page").addEventListener('click', function(){
+document.querySelector("#index").addEventListener('click', function(){
     location.href="logout.php";
 });
 
@@ -59,45 +59,6 @@ select.addEventListener("change",function(event){
 
 });
 
-function checkvalid(){
-    var name = document.querySelector("#sname");
-    var designation = document.querySelector("#designation");
-    var qualification = document.querySelector("#qualification");
-    var info = document.querySelector("#info");
-
-    name.setCustomValidity("");
-    if(name.value.trim() == ""){
-        name.setCustomValidity("please fill out this field");
-    }
-    name.oninput = function(e) {
-        e.target.setCustomValidity("");
-    };
-
-    designation.setCustomValidity("");
-    if(designation.value.trim() == ""){
-        designation.setCustomValidity("please fill out this field");
-    }
-    designation.oninput = function(e) {
-        e.target.setCustomValidity("");
-    };
-
-    qualification.setCustomValidity("");
-    if(qualification.value.trim() == ""){
-        qualification.setCustomValidity("please fill out this field");
-    }
-    qualification.oninput = function(e) {
-        e.target.setCustomValidity("");
-    };
-
-    info.setCustomValidity("");
-    if(info.value.trim() == ""){
-        info.setCustomValidity("please fill out this field");
-    }
-    info.oninput = function(e) {
-        e.target.setCustomValidity("");
-    };
-    
-}
 
 // backend connection for staff info
 

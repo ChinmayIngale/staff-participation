@@ -110,7 +110,7 @@
 			  </div>
 			</div>
 			<div class="right_btn">
-				<button id="main_page">Log out</button>
+				<button id="index">Log out</button>
 			</div>
 		</nav>
 	</header>
@@ -239,7 +239,7 @@
 				</div>
 
 				<div id="submit">
-					<input type="submit" class="upload" name="upload2" value="Upload" form="newf" onclick="checkvalid()">
+					<input type="submit" class="upload" name="upload2" value="Upload" form="newf" >
 					<p id="status">
 						<?php
 							if($status2 == "success"){

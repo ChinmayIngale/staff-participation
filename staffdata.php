@@ -50,7 +50,7 @@
 			  </div>
 			</div>
 			<div class="right_btn">
-				<button id="main_page">Log out</button>
+				<button id="index">Log out</button>
 			</div>
 		</nav>
 	</header>
@@ -171,7 +171,7 @@
         document.querySelector("#tsr").value=sr;
         console.log(sr);
     }
-    document.querySelector("#main_page").addEventListener('click', function(){
+    document.querySelector("#index").addEventListener('click', function(){
     location.href="logout.php";
 });
 </script>

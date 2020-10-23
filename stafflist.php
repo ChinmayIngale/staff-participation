@@ -2,25 +2,11 @@
 <?php
     require_once('pdo.php');
 
-    if(isset($_GET["search"])){
-        $serach = $_GET['search'];
-        $sql="SELECT * FROM `staff` WHERE S_name LIKE '%$serach%'";
-    }
-    else{
-        if($dept == "All Staff"){
-            $sql="SELECT * FROM `staff` ORDER BY `S_post` DESC";
-        }
-        else{
-            $sql ="SELECT * FROM `staff` WHERE dept= :dept";
-
-        }
-    }
-    //echo $sql;
+    $sql ="SELECT * FROM `staff` WHERE dept= :dept";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
-        ':dept' => $dept)
+        ':dept' => $_POST['dept'])
     );
-
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     foreach( $rows as $row ) {
         $ssn = $row['ssn'];
