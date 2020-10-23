@@ -95,7 +95,7 @@ if ( isset($_SESSION['error']) ) {
     
     
     <input type="submit" id="loginbtn" class="button " value="Log In"></button>
-    <p class="signup">OR <a href="#">Sign up</a></p>
+    <p class="signup">OR <a href="signup.php">Sign up</a></p>
     </form>
    
 </div>

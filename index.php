@@ -43,7 +43,7 @@
     <div class="img" style="height: 400px;">
         <div class="overlay">
             <div class="heading">
-                <div class="res"><h2 style="font-size: 80px;">Staff Activity</h2></div>
+                <div class="res"><h2 style="font-size: 70px;">Staff Activity</h2></div>
                 <div class="break"></div>
                 <span id="line"></span>
             </div>

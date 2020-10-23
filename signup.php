@@ -1,11 +1,8 @@
 <?php
 	session_start();
 	require_once('pdo.php');
-	error_reporting(E_ERROR | E_WARNING | E_PARSE);
-
-	if ( ! isset($_SESSION['uname']) && $_SESSION['user'] == 'admin') {
-        die('ACCESS DENIED');
-    }
+    error_reporting(E_ERROR | E_WARNING | E_PARSE);
+    
 	$salt = 'XyZzy12*_';
 	$status2="";
 	if(isset($_POST['upload2'])){
@@ -75,11 +72,14 @@
 		$stmt->bindValue(':pass',$pass, PDO::PARAM_STR);
 		$status = $stmt->execute();
 
-			if($status){
-				$status2 = "success";
-			} else {
-				$status2 = "fail";
-			}
+		$ssn = $pdo->lastInsertId();
+		$_SESSION['ssn']=$ssn;
+
+		if($status){
+			$status2 = "success";
+		} else {
+			$status2 = "fail";
+		}
 		
 	}
 	
@@ -90,88 +90,30 @@
 <meta charset="utf-8">
 <title>Add Staff Activity </title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/datastyle.css">
+<link rel="stylesheet" href="css/signup.css">
 <script src="js/jquery-3.5.1.min.js"></script>
 </head>
 
+
 <body>
-	<header style="background-color: turquoise;">
-		<nav id="header">
-			<div id="name">
-            <div class="header_logo">
-              <a href="https://www.vcet.edu.in/">
-                <div id="logo-img"></div>
-              </a>
-            </div>
-              <div class="header_name">
-                <a href="https://www.vcet.edu.in/"><h1>Vidyavardhini's College Of Engineering & Technology</h1></a>
-                <p>विद्यावर्धिनीचे अभियांत्रिकी आणि तंत्रज्ञान महाविद्यालय, वसई</p>
-			  </div>
-			</div>
-			<div class="right_btn">
-				<button id="index">Log out</button>
-			</div>
-		</nav>
-	</header>
+<header>
+  <nav id="header">
+      <div class="header_logo">
+        <a href="https://www.vcet.edu.in/">
+          <div id="logo-img"></div>
+        </a>
+      </div>
+        <div class="header_name">
+          <a href="https://www.vcet.edu.in/"><h1>Vidyavardhini's College Of Engineering & Technology</h1>
+          <p>विद्यावर्धिनीचे अभियांत्रिकी आणि तंत्रज्ञान महाविद्यालय, वसई</p></a>
+        </div>
+  </nav>
+
+</header>
+    
 	<div id="main">
-	<div id="data_add_button">
-		<div id="select_buttons">
-		<div data-form="#exist" class="add_button active"><span class="text">Add program in Existing Staff </span></div>
-		<div data-form="#new" class="add_button"><span class="text">Add New Staff</span></div>
-		</div>
-	</div>
-	<div id="data_in">
-		<div id="exist" class="form">
-			<form id="existf" method="post" action="addnew.php">
-					<legend>Select staff:</legend>
-					<div class="container">
-					<div>
-						<label for="select_dept">Select Department:<sup class="red">*</sup></label><br>
-						<select id="select_dept" name="sdept" required >
-							<option value="">--Select Department--</option>
-							<option class="do" id="Mechanical" value="Mechanical" <?=$_SESSION['dept'] == "Mechanical" ? ' selected="selected"' : ''?>>Mechanical Department</option>
-							<option class="do" id="Electronics And Telecommunications" value="Electronics And Telecommunications" <?=$_SESSION['dept'] == "Electronics And Telecommunications" ? ' selected="selected"' : ''?>>Electronics And Telecommunications Department</option>
-							<option class="do" id="Instrumentation" value="Instrumentation" <?=$_SESSION['dept'] == "Instrumentation" ? ' selected="selected"' : ''?>>Instrumentation Department</option>
-							<option class="do" id="Computer" value="Computer" <?=$_SESSION['dept'] == "Computer" ? ' selected="selected"' : ''?>>Computer Department</option>
-							<option class="do" id="Information Technology" value="Information Technology" <?=$_SESSION['dept'] == "Information Technology" ? ' selected="selected"' : ''?>>Information Technology Department</option>
-							<option class="do" id="Civil" value="Civil" <?=$_SESSION['dept'] == "Civil" ? ' selected="selected"' : ''?>>Civil Department</option>
-						</select> 
-					</div>
-					<div>
-						<label for="select_staff">Select Staff:<sup class="red">*</sup></label><br>
-						<select id="select_staff" name="sstaff" required >
-						<?php
-							$conn = mysqli_connect("localhost","root","","staff_info");
-							if (mysqli_connect_error()){
-								echo "can't connect to database";
-							}
-							else{
-								$names_query = "SELECT * FROM `staff` ORDER BY `S_post` DESC";
-								echo "<option value=''>--Select Staff--</option>";
-								$stmt = $pdo->prepare($names_query);
-								$stmt->execute();
-								$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-								foreach( $rows as $row ) {
-									echo "<option class= '".htmlentities($row['dept'])."' value='".htmlentities($row['ssn'])."'";
-									echo ($_SESSION['ssn'] == $row['ssn']) ? "selected='selected'" : "";
-									echo ">".htmlentities($row['S_name'])."</option>";
-								}
-								
-							}
-						
-						?>
-						</select>
-						<input type="hidden" id="tsr" name="tsr">
-					</div>
-					</div>
-					</form> 
-					<div id="information">
-					
-					</div>
-					<div id="try"></div>
-			
-		</div>
-		<div id="new" class="form">
+    <div id="data_in" style="margin: 50px auto;">
+    <div id="new" class="form">
 		<form id="newf" method="post" enctype="multipart/form-data">
 			<div class="container">
 				<div>
@@ -236,34 +178,64 @@
 				</div>
 
 				<div id="submit">
-					<input type="submit" class="upload" name="upload2" value="Upload" form="newf" >
-					<p id="status">
-						<?php
-							if($status2 == "success"){
-								echo "<script>alert('New record created successfully')</script>";
-							} else if($status2 == "fail") {
-								echo "<script>alert('Error while uploading data')</script>";
-							}
-						?>
-					</p>
+					<input type="submit" class="upload" name="upload2" value="Create Account" form="newf" >
+					<p class="login">OR <a href="login_page.php">Login</a></p>
+
+					<?php
+						if($status2 == "success"){
+							echo "<script>alert('Account Created');
+								location.href='staffdata.php';
+								</script>";
+							
+						} else if($status2 == "fail") {
+							echo "<script>alert('Error while creating account');
+							location.href='signup.php';
+							</script>";
+						}
+					?>
+					
 				</div>
 			</div>
 		</form>
 		</div>
-	</div>
+    
+    </div>
 	</div>
 </body>
-
-<script src="js/datalogic.js"></script>
 <script>
-	<?php
-	if(isset($_SESSION['error'])){
-		echo "alert('".$_SESSION['error']."');";
-		unset($_SESSION['error']);
-	}
-	?>
-    if ( window.history.replaceState ) {
-        window.history.replaceState( null, null, window.location.href );
-    }
+document.addEventListener("DOMContentLoaded", () => {
+	var date = new Date();
+	var start = date.getFullYear();
+	var date = new Date();
+	var dd = date.getDate();
+	var mm = date.getMonth()+1;
+
+	//January is 0
+	var yyyy = date.getFullYear();
+	var today = yyyy+'-'+mm+'-'+dd;
+
+	document.getElementById("dob").setAttribute("max", today);
+	document.getElementById("doji").setAttribute("max", today);
+
+	const img = document.querySelector("#preview");
+	const select = document.querySelector("#image");
+	img.addEventListener('click', function() {
+		select.click();
+	});
+	select.addEventListener("change",function(event){
+		var reader = new FileReader();
+		reader.onload = function(){
+			if(reader.readyState == 2){
+				img.src = reader.result;
+			}
+		}
+		reader.readAsDataURL(event.target.files[0]);
+
+	});
+});
+
+if ( window.history.replaceState ) {
+	window.history.replaceState( null, null, window.location.href );
+}
 </script>
 </html>

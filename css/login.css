@@ -4,14 +4,11 @@
     padding: 0;
   }
   
-  html {
-    overflow-y: scroll;
-  }
-  
   body {
     background-image: url('../images/vcet.jpg');
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family: 'Titillium Web', sans-serif;
   }
   
@@ -28,7 +25,7 @@
     margin: 10px 15px 10px 15px;
   }
   .header_name {
-    padding-top: 20px;
+    padding-top: 15px;
     
   }
   .header_name h1 {
@@ -172,5 +169,14 @@
     }
     h2{
       font-size: 3em;
+    }
+  }
+  @media (max-width: 426px) {
+    .header_logo{
+      display: none;
+    }
+    .header_name{
+      margin: 15px;
+      padding: 0;
     }
   }
