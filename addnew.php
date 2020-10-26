@@ -6,10 +6,11 @@
 	if ( ! isset($_SESSION['uname']) ) {
 		die('ACCESS DENIED');
 	}
+	
 
 	$status1="";
 	if(isset($_POST['upload1'])){
-		$department = $_SESSION['dept'];
+		$department = strtolower($_SESSION['dept']);
 		$ssn = $_SESSION['ssn'];
 		$type = $_POST['type'];
 		$tol = $_POST['tol'];
@@ -62,6 +63,7 @@
 		$dept = $_POST['dept'];
 		$tsr = $_POST['tsr'];
 		$table_query = "SELECT * FROM `$dept` WHERE `sr.`= :row";
+		echo $table_query.'  '.$tsr.'  '. $dept;
 		$stmt = $pdo->prepare($table_query);
 		$status = $stmt->execute(array(
 				':row' => $tsr)
@@ -138,7 +140,7 @@
 								<label class="type" for="FDP">FDP</label>
 								<input class="type" type="radio" id="STTP" name="type" value="STTP" <?= ($type == 'STTP')? "checked" : ""; ?> required>
 								<label class="type" for="STTP">STTP</label>
-								<input class="type" type="radio" id="Workshop" name="type" value="Wrokshop" <?= ($type == 'Workshop')? "checked" : ""; ?> required >
+								<input class="type" type="radio" id="Workshop" name="type" value="Workshop" <?= ($type == 'Workshop')? "checked" : ""; ?> required >
 								<label class="type" for="Workshop">Workshop</label>
 							</div>
 							<div id="select_tol">
@@ -177,7 +179,7 @@
 					</fieldset>
 					<div id="submit">
 					<input type="submit" class="upload" name="upload1" value="Upload" form="existf">
-					<input type="button" value="cancel" class="upload" id="cancel">
+					<a href="<?= ($_SESSION['user'] == 'admin')? 'add_program.php' : 'staffdata.php'; ?>"><input type="button" value="cancel" class="upload"></a>
 					<p id="status">
 						<?php
 							if($status1 == "success"){

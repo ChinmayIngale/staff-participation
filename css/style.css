@@ -70,9 +70,8 @@ h2{
     letter-spacing: 3.6px;
     text-shadow: 0px 0px 48px rgba(0,0,0,0.3);
 }
-body{
-    margin: 0;
-    padding: 0;
+#staffacivity{
+  font-size: 100px;
 }
 .img{
    background-image: url("../images/clg_pic.jpg");
@@ -388,6 +387,9 @@ ul{
   h2{
     font-size: 3em;
   }
+  #staffacivity{
+    font-size: 80px;
+  }
 }
 
 @media (max-width: 426px) {
@@ -412,5 +414,8 @@ ul{
   }
   h2{
     font-size: 1.5em;
+  }
+  #staffacivity{
+    font-size: 60px;
   }
 }

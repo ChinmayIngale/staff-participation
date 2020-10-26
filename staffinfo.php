@@ -12,7 +12,7 @@
     $ssn = $row['ssn'];
     $sname = $row['S_name'];
     $sinfo = $row['S_info'];
-    $dept = $row['dept'];
+    $dept = strtolower($row['dept']);
 
 ?>
 <!DOCTYPE html>
@@ -39,7 +39,7 @@
 			  </div>
 			</div>
 			<div class="right_btn">
-				<button id="login_page">Log in</button>
+				<a href="login_page.php"><button id="login_page" >Login</button></a>
 			</div>
 		</nav>
       </header>

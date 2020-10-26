@@ -13,7 +13,7 @@ btns.forEach(btn => {
 });
 
 function stafflist(dept){
-
+  console.log(dept);
   $.ajax({
     url:"stafflist.php",
     method:"post",
@@ -22,8 +22,3 @@ function stafflist(dept){
       document.querySelector("#stafflist").innerHTML = data;
   });
 }
-
-
-document.querySelector("#login_page").addEventListener('click', function(){
-  location.href="login_page.php";
-});

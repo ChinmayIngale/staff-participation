@@ -19,10 +19,16 @@ tabs.forEach(tab=> {
     });
 });
 
-
-//redirect
-document.querySelector("#index").addEventListener('click', function(){
-    location.href="logout.php";
+//show password
+document.querySelector('.eye').addEventListener('click',function () {
+    var x = document.getElementById("pass");
+    if (x.type === "password") {
+        x.type = "text";
+        document.querySelector('.eye').innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
+    } else {
+        x.type = "password";
+        document.querySelector('.eye').innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
+    }
 });
 
 

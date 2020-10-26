@@ -14,7 +14,7 @@
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 		if($row != false){
 			$_SESSION['error'] = 'There is already an account associated with this email';
-			header("Location: add_program.php");
+			header("Location: signup.php");
             return;
 		}
 
@@ -73,7 +73,9 @@
 		$status = $stmt->execute();
 
 		$ssn = $pdo->lastInsertId();
-		$_SESSION['ssn']=$ssn;
+		$_SESSION['ssn']= $ssn ;
+		$_SESSION['user']= 'staff';
+		$_SESSION['uname']= $sname;
 
 		if($status){
 			$status2 = "success";
@@ -88,7 +90,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Add Staff Activity </title>
+<title>New Account </title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/signup.css">
 <script src="js/jquery-3.5.1.min.js"></script>
@@ -122,9 +124,15 @@
 
 					<label for="email">Email:<sup class="red">*</sup></label><br>
 					<input type="Email" id="email" name="email" required placeholder="example@vcet.edu.in "><br>
+					<?php
+					if ( isset($_SESSION['error']) ) {
+						echo('<p class="red">'.htmlentities($_SESSION['error'])."</p><br>");
+						unset($_SESSION['error']);
+					}
+					?>
 
 					<label for="pass">Password:<sup class="red">*</sup></label><br>
-					<input type="password" id="pass" name="pass" required placeholder="Password "><br>
+					<input type="password" id="pass" name="pass" required placeholder="Password "><span class="eye"><i class="fa fa-eye" aria-hidden="true"></i></span><br>
 				</div>
 				<div id="staffpic" style="padding: 0 20px;">
 					<div id="dash">
@@ -135,14 +143,14 @@
 				</div>
 				<div>
 					<label for="department">Department:<sup class="red">*</sup></label><br>
-					<select id="department" name="department" required >
+					<select id="department" name="department" required >	
 						<option value="">--Select Department--</option>
-						<option id="Mechanical" value="Mechanical">Mechanical Department</option>
-						<option id="Electronics And Telecommunications" value="Electronics And Telecommunications">Electronics And Telecommunications Department</option>
-						<option id="Instrumentation" value="Instrumentation">Instrumentation Department</option>
-						<option id="Computer" value="Computer">Computer Department</option>
-						<option id="Information Technology" value="Information Technology">Information Technology Department</option>
-						<option id="Civil" value="Civil">Civil Department</option>
+						<option value="Mechanical">Mechanical Department</option>
+						<option value="Electronics And Telecommunications">Electronics And Telecommunications Department</option>
+						<option value="Instrumentation">Instrumentation Department</option>
+						<option value="Computer">Computer Department</option>
+						<option value="Information Technology">Information Technology Department</option>
+						<option value="Civil">Civil Department</option>
 					</select> <br>
 
 					<label for="designation">Staff Designation:<sup class="red">*</sup></label><br>
@@ -179,7 +187,7 @@
 
 				<div id="submit">
 					<input type="submit" class="upload" name="upload2" value="Create Account" form="newf" >
-					<p class="login">OR <a href="login_page.php">Login</a></p>
+					<p class="login">OR <a href="login_page.php">LOGIN</a></p>
 
 					<?php
 						if($status2 == "success"){
@@ -231,6 +239,19 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 		reader.readAsDataURL(event.target.files[0]);
 
+	});
+
+	//show password
+
+	document.querySelector('.eye').addEventListener('click',function () {
+		var x = document.getElementById("pass");
+		if (x.type === "password") {
+			x.type = "text";
+			document.querySelector('.eye').innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
+		} else {
+			x.type = "password";
+			document.querySelector('.eye').innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
+		}
 	});
 });
 

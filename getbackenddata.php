@@ -37,6 +37,7 @@ if(isset($_POST["ssn"])){
     $info = $row['S_info'];
     $ssn = $row['ssn'];
     $dept = $row['dept'];
+    $deptlower = strtolower($row['dept']);
     $_SESSION['name'] = $name; 
     $_SESSION['dept'] = $dept; 
     $_SESSION['ssn'] = $ssn; 
@@ -46,7 +47,10 @@ if(isset($_POST["ssn"])){
     echo '<div id="staffname">';
     echo '<h3>'.htmlentities($name).'</h3>';
     echo '</div>';
-    echo '<div id="staffdes">'.htmlentities($info).'</div>';
+    echo '<div id="staffdes">'.$info.'</div>';
+    if($_SESSION['user'] == 'staff'){
+        echo '<a href="edit.php"><button id="editbtn">Edit Profile</button></a>';
+    }
     echo '</div>';
     echo '<div id="staffpic">';
     echo '<div>';
@@ -76,7 +80,7 @@ if(isset($_POST["ssn"])){
                 </thead>
             <tbody>';
     $sr = 1;
-    $table_query = "SELECT *,DATE_FORMAT(start_date,'%d/%m/%Y') AS sd, DATE_FORMAT(end_date,'%d/%m/%Y') AS ed FROM `$dept` WHERE ssn= :ssn ORDER BY TYPE, start_date;";
+    $table_query = "SELECT *,DATE_FORMAT(start_date,'%d/%m/%Y') AS sd, DATE_FORMAT(end_date,'%d/%m/%Y') AS ed FROM `$deptlower` WHERE ssn= :ssn ORDER BY TYPE, start_date;";
     $stmt = $pdo->prepare($table_query);
     $stmt->execute(array(
             ':ssn' => $ssn)
@@ -104,9 +108,9 @@ if(isset($_POST["ssn"])){
                 <td class="data_td">'.htmlentities($nol).'</td>
                 <td class="data_td">
                 <form class="deletef">
-                    <button class="operation del" form="deletef" onClick="deleteInfo(`'.htmlentities($dept).'`,'.htmlentities($tsr).')"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                    <button class="operation del" form="deletef" onClick="deleteInfo(`'.htmlentities($deptlower).'`,'.htmlentities($tsr).')"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                 </form>
-                <button name="update" form="existf" class="operation update" onClick="modifyInfo(`'.htmlentities($dept).'`,'.htmlentities($tsr).')"><i class="fa fa-pencil" aria-hidden="true"></i> Modify</button>
+                <button name="update" form="existf" class="operation update" onClick="modifyInfo(`'.htmlentities($deptlower).'`,'.htmlentities($tsr).')"><i class="fa fa-pencil" aria-hidden="true"></i> Modify</button>
                 </td>
                 </tr>';
         $sr++; 
@@ -118,5 +122,4 @@ if(isset($_POST["ssn"])){
     echo '</div>';
               
 }
-
 ?> 

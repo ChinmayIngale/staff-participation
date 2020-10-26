@@ -211,6 +211,12 @@ legend{
 	width: 100%;
 	margin: 10px;
 }
+.eye{
+	margin: -25px;
+	z-index: 4;
+	position: relative;
+}
+
 .red{
 	color: red;
 	font-size: 16px;
@@ -254,6 +260,7 @@ legend{
 	line-height: 1;
 }
 #staffdes{
+	margin-top: 10px;
 	margin-bottom: 20px;
 	color: #929292;
 	font-size: 16px;
@@ -286,6 +293,19 @@ legend{
 	background-color: rgba(72, 174, 229, 0.7);
 	color: white;
 }
+
+#editbtn{
+	background-color: #59a9ff;
+	padding: 5px 10px;
+	border-radius: 5px;
+	border-color: #59a9ff;
+	color: #fff;
+	font-size: 18px;
+}
+#editbtn:hover{
+	background-color: #007bff;
+}
+
 .operation{
 	margin: 10px;
 	padding: 5px 10px;
@@ -294,12 +314,14 @@ legend{
 }
 .del{
 	background-color: #d9534f;
+	border-color: #d9534f;
 }
 .del:hover{
 	background-color: #c9302c;
 }
 .update{
 	background-color: #5cb85c;
+	border-color: #5cb85c;
 }
 .update:hover{
 	background-color: #449d44;

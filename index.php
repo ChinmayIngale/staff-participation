@@ -36,14 +36,14 @@
 			  </div>
 			</div>
 			<div class="right_btn">
-				<button id="login_page" >Login</button>
+				<a href="login_page.php"><button id="login_page" >Login</button></a>
 			</div>
 		</nav>
     </header>
     <div class="img" style="height: 400px;">
         <div class="overlay">
             <div class="heading">
-                <div class="res"><h2 style="font-size: 70px;">Staff Activity</h2></div>
+                <div class="res"><h2 id="staffacivity">Staff Activity</h2></div>
                 <div class="break"></div>
                 <span id="line"></span>
             </div>
@@ -83,7 +83,7 @@
                         $sname = $row['S_name'];
                         $spost = $row['S_post'];
                         $semail = $row['S_email'];
-                        echo '<div class="card"><a href="pg2.php?ssn='.htmlentities($ssn).'" target="_blank">
+                        echo '<div class="card"><a href="staffinfo.php?ssn='.htmlentities($ssn).'" target="_blank">
                                 <div class="image">
                                     <img src="showimg.php?ssn='.htmlentities($ssn).'">
                                 </div>

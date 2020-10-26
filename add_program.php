@@ -3,9 +3,11 @@
 	require_once('pdo.php');
 	error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
-	if ( ! isset($_SESSION['uname']) && $_SESSION['user'] == 'admin') {
-        die('ACCESS DENIED');
-    }
+	if ( !isset($_SESSION['uname']) || $_SESSION['user'] == 'staff'){
+		die('ACCESS DENIED');
+	
+}
+	
 	$salt = 'XyZzy12*_';
 	$status2="";
 	if(isset($_POST['upload2'])){
@@ -109,7 +111,7 @@
 			  </div>
 			</div>
 			<div class="right_btn">
-				<button id="index">Log out</button>
+				<a href="logout.php"><button id="index">Log out</button></a>
 			</div>
 		</nav>
 	</header>
@@ -127,7 +129,7 @@
 					<div class="container">
 					<div>
 						<label for="select_dept">Select Department:<sup class="red">*</sup></label><br>
-						<select id="select_dept" name="sdept" required >
+						<select id="select_dept" name="dept" required >
 							<option value="">--Select Department--</option>
 							<option class="do" id="Mechanical" value="Mechanical" <?=$_SESSION['dept'] == "Mechanical" ? ' selected="selected"' : ''?>>Mechanical Department</option>
 							<option class="do" id="Electronics And Telecommunications" value="Electronics And Telecommunications" <?=$_SESSION['dept'] == "Electronics And Telecommunications" ? ' selected="selected"' : ''?>>Electronics And Telecommunications Department</option>
@@ -141,11 +143,6 @@
 						<label for="select_staff">Select Staff:<sup class="red">*</sup></label><br>
 						<select id="select_staff" name="sstaff" required >
 						<?php
-							$conn = mysqli_connect("localhost","root","","staff_info");
-							if (mysqli_connect_error()){
-								echo "can't connect to database";
-							}
-							else{
 								$names_query = "SELECT * FROM `staff` ORDER BY `S_post` DESC";
 								echo "<option value=''>--Select Staff--</option>";
 								$stmt = $pdo->prepare($names_query);
@@ -156,9 +153,7 @@
 									echo ($_SESSION['ssn'] == $row['ssn']) ? "selected='selected'" : "";
 									echo ">".htmlentities($row['S_name'])."</option>";
 								}
-								
-							}
-						
+														
 						?>
 						</select>
 						<input type="hidden" id="tsr" name="tsr">
@@ -176,13 +171,13 @@
 			<div class="container">
 				<div>
 					<label for="sname">Staff Name:<sup class="red">*</sup></label><br>
-					<input type="text" id="sname" name="sname" placeholder="Staff Name" required/><br>
+					<input type="text" id="sname" name="sname" placeholder="Staff Name" required autocomplete="off"/><br>
 
 					<label for="email">Email:<sup class="red">*</sup></label><br>
-					<input type="Email" id="email" name="email" required placeholder="example@vcet.edu.in "><br>
+					<input type="Email" id="email" name="email" required placeholder="example@vcet.edu.in" autocomplete="off"><br>
 
 					<label for="pass">Password:<sup class="red">*</sup></label><br>
-					<input type="password" id="pass" name="pass" required placeholder="Password "><br>
+					<input type="password" id="pass" name="pass" required placeholder="Password " autocomplete="off"><span class="eye"><i class="fa fa-eye" aria-hidden="true"></i></span><br>
 				</div>
 				<div id="staffpic" style="padding: 0 20px;">
 					<div id="dash">
@@ -193,14 +188,14 @@
 				</div>
 				<div>
 					<label for="department">Department:<sup class="red">*</sup></label><br>
-					<select id="department" name="department" required >
+					<select id="department" name="department" required >	
 						<option value="">--Select Department--</option>
-						<option id="Mechanical" value="Mechanical">Mechanical Department</option>
-						<option id="Electronics And Telecommunications" value="Electronics And Telecommunications">Electronics And Telecommunications Department</option>
-						<option id="Instrumentation" value="Instrumentation">Instrumentation Department</option>
-						<option id="Computer" value="Computer">Computer Department</option>
-						<option id="Information Technology" value="Information Technology">Information Technology Department</option>
-						<option id="Civil" value="Civil">Civil Department</option>
+						<option value="Mechanical">Mechanical Department</option>
+						<option value="Electronics And Telecommunications">Electronics And Telecommunications Department</option>
+						<option value="Instrumentation">Instrumentation Department</option>
+						<option value="Computer">Computer Department</option>
+						<option value="Information Technology">Information Technology Department</option>
+						<option value="Civil">Civil Department</option>
 					</select> <br>
 
 					<label for="designation">Staff Designation:<sup class="red">*</sup></label><br>

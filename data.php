@@ -112,7 +112,7 @@
   $stmt->execute(array(
       ':ssn' => $ssn)
   );
-
+  
   $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
   foreach( $rows as $row ) {
     
@@ -124,7 +124,6 @@
     $sd = $row['sd'];
     $ed = $row['ed'];
     $nol = $row['nature_of_linkage'];
-
     echo '<tr class="data_tr">';
     echo '<td class="data_td">'.$sr.'</td>';
     echo '<td class="data_td">'. htmlentities($tol).'</td>';

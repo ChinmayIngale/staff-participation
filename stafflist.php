@@ -13,7 +13,7 @@
         $sname = $row['S_name'];
         $spost = $row['S_post'];
         $semail = $row['S_email'];
-        echo '<div class="card"><a href="pg2.php?ssn='.htmlentities($ssn).'" target="_blank">
+        echo '<div class="card"><a href="staffinfo.php?ssn='.htmlentities($ssn).'" target="_blank">
                 <div class="image">
                     <img src="showimg.php?ssn='.htmlentities($ssn).'">
                 </div>

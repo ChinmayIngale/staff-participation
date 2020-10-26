@@ -1,6 +1,17 @@
 <?php
   session_start();
   require_once('pdo.php');
+
+  if(isset($_SESSION['uname'])){
+    if($_SESSION['user'] == 'admin'){
+      header("Location: add_program.php");
+      return;
+    }
+    if($_SESSION['user'] == 'staff'){
+      header("Location: staffdata.php");
+      return;
+    }
+  }
   
   if ( isset($_POST['uname']) && isset($_POST['pass']) ) {
     $salt = 'XyZzy12*_';
@@ -10,7 +21,7 @@
     echo $check;
       if ( $_POST['uname'] === "admin@vcet.edu.in" && $stored_hash == $check) {
           $_SESSION['uname'] = $_POST['uname'];
-          $_SESSION['user'] == 'admin';
+          $_SESSION['user'] = 'admin';
           header("Location: add_program.php");
           return;
       }
@@ -29,7 +40,7 @@
         if($row['password'] == $check){
           $_SESSION['uname'] = $row['S_name'];
           $_SESSION['ssn'] = $row['ssn'];
-          $_SESSION['user'] == 'staff';
+          $_SESSION['user'] = 'staff';
           header("Location: staffdata.php");
           return;
         }else{
@@ -47,10 +58,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>signup/login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/login.css">
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.5.0/js/md5.min.js"></script>
 </head>
 <body>
 <header>
@@ -90,12 +101,14 @@ if ( isset($_SESSION['error']) ) {
         Password<span class="req">*</span>
       </label>
       <input type="password" name="pass" id="pass" required autocomplete="off"/>
+      <span class="eye"><i class="fa fa-eye" aria-hidden="true" style="font-size: 1.2em;"></i> show password</span>
       
     </div>
     
-    
+    <div id="submit">
     <input type="submit" id="loginbtn" class="button " value="Log In"></button>
-    <p class="signup">OR <a href="signup.php">Sign up</a></p>
+    <p class="signup">OR <a href="signup.php">SIGN UP</a></p>
+    </div>
     </form>
    
 </div>
