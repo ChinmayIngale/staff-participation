@@ -67,12 +67,12 @@
 <header>
   <nav id="header">
       <div class="header_logo">
-        <a href="https://www.vcet.edu.in/">
+        <a href="index.php">
           <div id="logo-img"></div>
         </a>
       </div>
         <div class="header_name">
-          <a href="https://www.vcet.edu.in/"><h1>Vidyavardhini's College Of Engineering & Technology</h1>
+          <a href="index.php"><h1>Vidyavardhini's College Of Engineering & Technology</h1>
           <p>विद्यावर्धिनीचे अभियांत्रिकी आणि तंत्रज्ञान महाविद्यालय, वसई</p></a>
         </div>
   </nav>

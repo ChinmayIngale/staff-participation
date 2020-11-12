@@ -49,7 +49,8 @@ if(isset($_POST["ssn"])){
     echo '</div>';
     echo '<div id="staffdes">'.$info.'</div>';
     if($_SESSION['user'] == 'staff'){
-        echo '<a href="edit.php"><button id="editbtn">Edit Profile</button></a>';
+        echo '<a href="edit.php"><button class="editbtn">Edit Profile</button></a>';
+        echo '<a href="deletestaff.php" Onclick="return confirm(\'Are you sure you want to delete?\');"><button class="editbtn del">Delete my Profile</button></a>';
     }
     echo '</div>';
     echo '<div id="staffpic">';

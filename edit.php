@@ -83,7 +83,7 @@
     
     $query = "SELECT * FROM staff where `ssn`= :ssn";
     $stmt = $pdo->prepare($query);
-    $status = $stmt->execute(array(
+    $stmt->execute(array(
             ':ssn' => $_SESSION['ssn'])
         );
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -108,12 +108,12 @@
 		<nav id="header">
 			<div id="name">
             <div class="header_logo">
-              <a href="https://www.vcet.edu.in/">
+              <a href="index.php">
                 <div id="logo-img"></div>
               </a>
             </div>
               <div class="header_name">
-                <a href="https://www.vcet.edu.in/"><h1>Vidyavardhini's College Of Engineering & Technology</h1></a>
+                <a href="index.php"><h1>Vidyavardhini's College Of Engineering & Technology</h1></a>
                 <p>विद्यावर्धिनीचे अभियांत्रिकी आणि तंत्रज्ञान महाविद्यालय, वसई</p>
 			  </div>
 			</div>

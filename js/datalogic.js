@@ -152,7 +152,7 @@ select.addEventListener("change",function(event){
     deleteInfo = function(dept,sr){
         console.log(dept);
         $.ajax({
-            url:"delete.php",
+            url:"deleteprg.php",
             method:"post",
             data:{"table":dept,"row": sr}
         }).done(function(data){

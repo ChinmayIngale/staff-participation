@@ -294,15 +294,16 @@ legend{
 	color: white;
 }
 
-#editbtn{
+.editbtn{
 	background-color: #59a9ff;
 	padding: 5px 10px;
 	border-radius: 5px;
 	border-color: #59a9ff;
 	color: #fff;
 	font-size: 18px;
+	margin-right: 10px;
 }
-#editbtn:hover{
+.editbtn:hover{
 	background-color: #007bff;
 }
 
